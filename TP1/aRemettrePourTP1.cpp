@@ -40,7 +40,6 @@ void DonneesGTFS::ajouterLignes(const std::string &p_nomFichier)
 //! \throws logic_error si un problème survient avec la lecture du fichier
 void DonneesGTFS::ajouterStations(const std::string &p_nomFichier)
 {
-
     ifstream fichierStations(p_nomFichier);
     if (fichierStations.bad()) {throw logic_error("fichier introuvable");} //Vérifie si le fichier existe
     string lignesDuFichier;
@@ -60,8 +59,6 @@ void DonneesGTFS::ajouterStations(const std::string &p_nomFichier)
             arretVec.clear();
         }
     }
-
-
 }
 
 //! \brief ajoute les transferts dans l'objet GTFS
@@ -74,9 +71,7 @@ void DonneesGTFS::ajouterStations(const std::string &p_nomFichier)
 //! \throws logic_error si tous les arrets de la date et de l'intervalle n'ont pas été ajoutés
 void DonneesGTFS::ajouterTransferts(const std::string &p_nomFichier)
 {
-
-//écrire votre code ici
-
+    //écrire votre code ici
 }
 
 
@@ -86,7 +81,27 @@ void DonneesGTFS::ajouterTransferts(const std::string &p_nomFichier)
 void DonneesGTFS::ajouterServices(const std::string &p_nomFichier)
 {
 
-//écrire votre code ici
+    ifstream fichierServices(p_nomFichier);
+    if (fichierServices.bad()) {throw logic_error("fichier introuvable");} //Vérifie si le fichier existe
+    string lignesDuFichier;
+
+    while (getline(fichierServices, lignesDuFichier))
+    {
+        if (lignesDuFichier[0] != 's') // pour éviter la première ligne du fichier (à changer ? TODO)
+        {
+            vector<string> servicesVec = string_to_vector(lignesDuFichier, ','); // est-ce necessaire de convertir en vec? TODO
+            Date dateDeService(stoi(servicesVec[1].substr(0,4)),
+                    stoi(servicesVec[1].substr(4,2)),
+                    stoi(servicesVec[1].substr(6,2)));
+
+            if (servicesVec[2] == "1" && this->m_date == dateDeService)
+            {
+                this->m_services.insert(servicesVec[0]);
+            }
+            servicesVec.clear();
+        }
+    }
+
 
 }
 

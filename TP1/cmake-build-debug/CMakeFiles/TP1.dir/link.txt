@@ -1,2 +1,2 @@
-/usr/bin/ar qc ../libTP1.a  CMakeFiles/TP1.dir/arret.cpp.o CMakeFiles/TP1.dir/auxiliaires.cpp.o CMakeFiles/TP1.dir/coordonnees.cpp.o CMakeFiles/TP1.dir/ligne.cpp.o CMakeFiles/TP1.dir/station.cpp.o CMakeFiles/TP1.dir/voyage.cpp.o CMakeFiles/TP1.dir/DonneesGTFS.cpp.o CMakeFiles/TP1.dir/aRemettrePourTP1.cpp.o
-/usr/bin/ranlib ../libTP1.a
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar qc ../libTP1.a  CMakeFiles/TP1.dir/arret.cpp.o CMakeFiles/TP1.dir/auxiliaires.cpp.o CMakeFiles/TP1.dir/coordonnees.cpp.o CMakeFiles/TP1.dir/ligne.cpp.o CMakeFiles/TP1.dir/station.cpp.o CMakeFiles/TP1.dir/voyage.cpp.o CMakeFiles/TP1.dir/DonneesGTFS.cpp.o CMakeFiles/TP1.dir/aRemettrePourTP1.cpp.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib ../libTP1.a
