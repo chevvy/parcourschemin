@@ -80,7 +80,6 @@ void DonneesGTFS::ajouterTransferts(const std::string &p_nomFichier)
 //! \throws logic_error si un problème survient avec la lecture du fichier
 void DonneesGTFS::ajouterServices(const std::string &p_nomFichier)
 {
-
     ifstream fichierServices(p_nomFichier);
     if (fichierServices.bad()) {throw logic_error("fichier introuvable");} //Vérifie si le fichier existe
     string lignesDuFichier;
@@ -111,8 +110,29 @@ void DonneesGTFS::ajouterServices(const std::string &p_nomFichier)
 //! \throws logic_error si un problème survient avec la lecture du fichier
 void DonneesGTFS::ajouterVoyagesDeLaDate(const std::string &p_nomFichier)
 {
+    ifstream fichierVoyages(p_nomFichier);
+    if (fichierVoyages.bad()) {throw logic_error("fichier introuvable");} //Vérifie si le fichier existe
+    string lignesDuFichier;
 
-//écrire votre code ici
+    while (getline(fichierVoyages, lignesDuFichier))
+    {
+        if (lignesDuFichier[0] != 'r') // pour éviter la première ligne du fichier (à changer ? TODO)
+        {
+            vector<string> servicesVec = string_to_vector(lignesDuFichier, ','); // est-ce necessaire de convertir en vec? TODO
+            // 0-route_id, 1-service_id, 2-trip_id, 3-trip_headsign, 4-trip_short_name, 5-direction_id, 6- block_id, 7-shape_id, 8-wheelchair_accessible
+            // Voyage(const std::string & p_id[2], unsigned int p_ligne_id[0], const std::string & p_service_id[1], const std::string & p_destination[4]);
+            // if service_id dans m_services, ajoute à m_voyage
+            if (this->m_services.find(servicesVec[1]) != this->m_services.end())
+            {
+                Voyage newVoyage(servicesVec[2],
+                        stoi(servicesVec[0]),
+                        servicesVec[1],
+                        servicesVec[4]);
+                this->m_voyages[newVoyage.getId()] = newVoyage;
+            }
+            servicesVec.clear();
+        }
+    }
 
 }
 
