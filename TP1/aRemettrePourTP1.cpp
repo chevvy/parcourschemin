@@ -21,14 +21,22 @@ void DonneesGTFS::ajouterLignes(const std::string &p_nomFichier)
         if (lignesDuFichier[0] != 'r') // pour éviter la première ligne du fichier (à changer ? TODO)
         {
             vector<string> ligneVec = string_to_vector(lignesDuFichier, ',');
-            string p_numero = ligneVec[2];
-            p_numero.erase(remove(p_numero.begin(), p_numero.end(), '\"'), p_numero.end());
+
+            unsigned int id = stoi(ligneVec[0]);
+
+            string numero = ligneVec[2];
+            numero.erase(remove(numero.begin(), numero.end(), '\"'), numero.end());
+
             string p_description = ligneVec[4];
             p_description.erase(remove(p_description.begin(), p_description.end(), '\"'), p_description.end());
 
-            Ligne newLigne(stoi(ligneVec[0]), p_numero, p_description, Ligne::couleurToCategorie(ligneVec[7])); // est-ce que je serais mieux d'uniformiser pour que ça soit toutes des var ? TODO
-            this->m_lignes[newLigne.getId()] = newLigne;
-            this->m_lignes_par_numero.insert(make_pair(newLigne.getNumero(), newLigne));
+            CategorieBus categorie = Ligne::couleurToCategorie(ligneVec[7]);
+            // Ligne(unsigned int p_id, const std::string & p_numero, const std::string & p_description, const CategorieBus& p_categorie);
+
+            Ligne nouvelleLigne(id, numero, p_description, categorie);
+            this->m_lignes[id] = nouvelleLigne;
+            this->m_lignes_par_numero.insert(make_pair(numero, nouvelleLigne));
+
             ligneVec.clear(); //supprime le contenu du vecteur après utilisation
         }
     }
@@ -49,11 +57,15 @@ void DonneesGTFS::ajouterStations(const std::string &p_nomFichier)
         if (lignesDuFichier[0] != 's') // pour éviter la première ligne du fichier (à changer ? TODO)
         {
             vector<string> arretVec = string_to_vector(lignesDuFichier, ',');
+
             string p_nom = arretVec[1];
             p_nom.erase(remove(p_nom.begin(), p_nom.end(), '\"'), p_nom.end());
+
             string p_description = arretVec[2];
             p_description.erase(remove(p_description.begin(), p_description.end(), '\"'), p_description.end());
+
             Coordonnees coordStation(stod(arretVec[3]), stod(arretVec[4]));
+
             Station newStation(stoi(arretVec[0]), p_nom, p_description, coordStation);
             this->m_stations[stoi(arretVec[0])] = newStation;
             arretVec.clear();
@@ -86,9 +98,9 @@ void DonneesGTFS::ajouterServices(const std::string &p_nomFichier)
 
     while (getline(fichierServices, lignesDuFichier))
     {
-        if (lignesDuFichier[0] != 's') // pour éviter la première ligne du fichier (à changer ? TODO)
+        if (lignesDuFichier[0] != 's')
         {
-            vector<string> servicesVec = string_to_vector(lignesDuFichier, ','); // est-ce necessaire de convertir en vec? TODO
+            vector<string> servicesVec = string_to_vector(lignesDuFichier, ',');
             Date dateDeService(stoi(servicesVec[1].substr(0,4)),
                     stoi(servicesVec[1].substr(4,2)),
                     stoi(servicesVec[1].substr(6,2)));
@@ -116,24 +128,26 @@ void DonneesGTFS::ajouterVoyagesDeLaDate(const std::string &p_nomFichier)
 
     while (getline(fichierVoyages, lignesDuFichier))
     {
-        if (lignesDuFichier[0] != 'r') // pour éviter la première ligne du fichier (à changer ? TODO)
+        if (lignesDuFichier[0] != 'r')
         {
-            vector<string> servicesVec = string_to_vector(lignesDuFichier, ','); // est-ce necessaire de convertir en vec? TODO
+            vector<string> servicesVec = string_to_vector(lignesDuFichier, ',');
             // 0-route_id, 1-service_id, 2-trip_id, 3-trip_headsign, 4-trip_short_name, 5-direction_id, 6- block_id, 7-shape_id, 8-wheelchair_accessible
-            // Voyage(const std::string & p_id[2], unsigned int p_ligne_id[0], const std::string & p_service_id[1], const std::string & p_destination[4]);
-            // if service_id dans m_services, ajoute à m_voyage
-            if (this->m_services.find(servicesVec[1]) != this->m_services.end())
+            // Voyage(const std::string & p_id[2], unsigned int p_ligne_id[0], const std::string & p_service_id[1], const std::string & p_destination[3]);
+            // enlever les "" de destination
+            string idVoyage = servicesVec[2];
+            unsigned int idLigne = stoi(servicesVec[0]);
+            string idService = servicesVec[1];
+            string destinationVoyage = servicesVec[3];
+            destinationVoyage.erase(remove(destinationVoyage.begin(), destinationVoyage.end(), '\"'), destinationVoyage.end());
+
+            if (this->m_services.find(idService) != this->m_services.end())
             {
-                Voyage newVoyage(servicesVec[2],
-                        stoi(servicesVec[0]),
-                        servicesVec[1],
-                        servicesVec[4]);
+                Voyage newVoyage(idVoyage, idLigne, idService, destinationVoyage);
                 this->m_voyages[newVoyage.getId()] = newVoyage;
             }
             servicesVec.clear();
         }
     }
-
 }
 
 //! \brief ajoute les arrets aux voyages présents dans le GTFS si l'heure du voyage appartient à l'intervalle de temps du GTFS
@@ -167,7 +181,8 @@ void DonneesGTFS::ajouterArretsDesVoyagesDeLaDate(const std::string &p_nomFichie
                               stoi(arretsVec[1].substr(3,2)),
                               stoi(arretsVec[1].substr(6,2)));
 
-            if ((heureArrive >= this->m_now1) && (heureDepart <= this->m_now2))
+            if ((heureArrive >= this->m_now1) && (heureDepart <= this->m_now2)
+                && (this->m_voyages.find(arretsVec[0]) != this->m_voyages.end()))
             {
                 // 0 - trip_id, 1 - arrival_time, 2 - departure_time, 3 - stop_id, 4 - stop_sequence, 5 - pickup_type, 6 - drop_off_type
                 // 	Arret(unsigned int p_station_id, const Heure & p_heure_arrivee, const Heure & p_heure_depart,
@@ -177,25 +192,49 @@ void DonneesGTFS::ajouterArretsDesVoyagesDeLaDate(const std::string &p_nomFichie
                 unsigned int p_station_id = stoi(arretsVec[3]);
                 Arret::Ptr ptrArret = make_shared<Arret>(p_station_id, heureArrive, heureDepart, stoi(arretsVec[4]), arretsVec[0]);
                 this->m_voyages[arretsVec[0]].ajouterArret(ptrArret);
-                for ( auto & stationM : this->m_stations) // est-ce je renomme stationM ? TODO
-                {
-                    if(stationM.first == p_station_id)
-                    {
-                        stationM.second.addArret(ptrArret);
-                    }
-                }
+                // this->m_voyages.at(arretsVec[0]).ajouterArret(ptrArret);
+
             }
         }
     }
     // nettoyage de m_voyages
-    for (auto & voyageM : this->m_voyages) // est-ce je renomme voyageM ? TODO
+
+    for (auto & voyageM : this->m_voyages)
     {
         if (voyageM.second.getNbArrets() == 0)
         {
             this->m_voyages.erase(voyageM.first);
         }
+// vérifier si les voyages sont bien supprimés, et si en supprimant les stations vide, ça arrange des affaires.
+/*        for (auto & stations : this->m_stations)
+        {
+            if (stations.second.getNbArrets() == 0)
+            {
+                this->m_stations.erase(stations.first);
+            }
+        }*/
     }
+
+
+
+    //        if (voyageM.second.getNbArrets() > 0)
+    //        {
+    //           for (auto & arretsM : voyageM.second.getArrets())
+    //           {
+    //               unsigned int station_id = arretsM->getStationId();
+    //               this->m_stations.at(station_id).addArret(arretsM);
+    //           }
+    //        }
+
+
     // Ajouter copie ptr aux arrêt de la station m_station TODO
+    //     for ( auto & stationM : this->m_stations) // est-ce je renomme stationM ? TODO
+    //    {
+    //        if(stationM.first == p_station_id)
+    //        {
+    //            stationM.second.addArret(ptrArret);
+    //        }
+    //    }
 
 
 }
