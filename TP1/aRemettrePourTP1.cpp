@@ -145,7 +145,58 @@ void DonneesGTFS::ajouterVoyagesDeLaDate(const std::string &p_nomFichier)
 void DonneesGTFS::ajouterArretsDesVoyagesDeLaDate(const std::string &p_nomFichier)
 {
 
-//écrire votre code ici
+    ifstream fichierArrets(p_nomFichier);
+    if (fichierArrets.bad()) {throw logic_error("fichier introuvable");} //Vérifie si le fichier existe
+    string lignesDuFichier;
+
+    while (getline(fichierArrets, lignesDuFichier))
+    {
+        // ajout des arrêts au station en fonction du temps demandé
+        if (lignesDuFichier[0] != 't') // pour éviter la première ligne du fichier (à changer ? TODO)
+        {
+            vector<string> arretsVec = string_to_vector(lignesDuFichier, ','); // est-ce necessaire de convertir en vec? TODO
+            // 0 - trip_id, 1 - arrival_time, 2 - departure_time, 3 - stop_id, 4 - stop_sequence, 5 - pickup_type, 6 - drop_off_type
+            // faire objet heure arrival time
+            // faire objet heure departure time
+            // if arrival time => now 1 && departure time <= now 2
+                // ajout de l'arrêt
+            Heure heureArrive(stoi(arretsVec[1].substr(0,2)),
+                              stoi(arretsVec[1].substr(3,2)),
+                              stoi(arretsVec[1].substr(6,2)));
+            Heure heureDepart(stoi(arretsVec[1].substr(0,2)),
+                              stoi(arretsVec[1].substr(3,2)),
+                              stoi(arretsVec[1].substr(6,2)));
+
+            if ((heureArrive >= this->m_now1) && (heureDepart <= this->m_now2))
+            {
+                // 0 - trip_id, 1 - arrival_time, 2 - departure_time, 3 - stop_id, 4 - stop_sequence, 5 - pickup_type, 6 - drop_off_type
+                // 	Arret(unsigned int p_station_id, const Heure & p_heure_arrivee, const Heure & p_heure_depart,
+                //          unsigned int p_numero_sequence, const std::string & p_voyage_id);
+                // cout << stoi(arretsVec[3]) << heureArrive << heureDepart << arretsVec[4] << arretsVec[0];
+                // Arret newArret(stoi(arretsVec[3]), heureArrive, heureDepart, stoi(arretsVec[4]), arretsVec[0]);
+                unsigned int p_station_id = stoi(arretsVec[3]);
+                const Arret::Ptr ptrArret = make_shared<Arret>(p_station_id, heureArrive, heureDepart, stoi(arretsVec[4]), arretsVec[0]);
+                this->m_voyages[arretsVec[0]].ajouterArret(ptrArret);
+                for ( auto & stationM : this->m_stations) // est-ce je renomme stationM ? TODO
+                {
+                    if(stationM.first == p_station_id)
+                    {
+                        stationM.second.addArret(ptrArret);
+                    }
+                }
+            }
+        }
+    }
+    // nettoyage de m_voyages
+    for (auto & voyageM : this->m_voyages) // est-ce je renomme voyageM ? TODO
+    {
+        if (voyageM.second.getNbArrets() == 0)
+        {
+            this->m_voyages.erase(voyageM.first);
+        }
+    }
+    // Ajouter copie ptr aux arrêt de la station m_station TODO
+
 
 }
 
