@@ -175,7 +175,7 @@ void DonneesGTFS::ajouterArretsDesVoyagesDeLaDate(const std::string &p_nomFichie
                 // cout << stoi(arretsVec[3]) << heureArrive << heureDepart << arretsVec[4] << arretsVec[0];
                 // Arret newArret(stoi(arretsVec[3]), heureArrive, heureDepart, stoi(arretsVec[4]), arretsVec[0]);
                 unsigned int p_station_id = stoi(arretsVec[3]);
-                const Arret::Ptr ptrArret = make_shared<Arret>(p_station_id, heureArrive, heureDepart, stoi(arretsVec[4]), arretsVec[0]);
+                Arret::Ptr ptrArret = make_shared<Arret>(p_station_id, heureArrive, heureDepart, stoi(arretsVec[4]), arretsVec[0]);
                 this->m_voyages[arretsVec[0]].ajouterArret(ptrArret);
                 for ( auto & stationM : this->m_stations) // est-ce je renomme stationM ? TODO
                 {
