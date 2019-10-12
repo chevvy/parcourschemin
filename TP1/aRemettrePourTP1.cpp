@@ -180,7 +180,7 @@ void DonneesGTFS::ajouterArretsDesVoyagesDeLaDate(const std::string &p_nomFichie
                               stoi(arretsVec[1].substr(3, 2)),
                               stoi(arretsVec[1].substr(6, 2)));
 
-            if ((heureArrive >= m_now1) && (heureDepart <= m_now2)
+            if ((heureArrive >= m_now1) && (heureDepart < m_now2)
                 && (m_voyages.find(arretsVec[0]) != m_voyages.end())) {
                 // 0 - trip_id, 1 - arrival_time, 2 - departure_time, 3 - stop_id, 4 - stop_sequence, 5 - pickup_type, 6 - drop_off_type
                 // 	Arret(unsigned int p_station_id, const Heure & p_heure_arrivee, const Heure & p_heure_depart,
