@@ -112,8 +112,6 @@ void DonneesGTFS::ajouterServices(const std::string &p_nomFichier)
             servicesVec.clear();
         }
     }
-
-
 }
 
 //! \brief ajoute les voyages de la date
@@ -191,13 +189,10 @@ void DonneesGTFS::ajouterArretsDesVoyagesDeLaDate(const std::string &p_nomFichie
                 Arret::Ptr ptrArret = make_shared<Arret>(p_station_id, heureArrive, heureDepart, stoi(arretsVec[4]),
                                                          arretsVec[0]);
                 m_voyages[arretsVec[0]].ajouterArret(ptrArret);
-                // m_voyages.at(arretsVec[0]).ajouterArret(ptrArret);
-
             }
         }
     }
-    // nettoyage de m_voyages
-
+    // Fait une copie de la map, pour ensuite itérer et supprimer les voyages sans arrêts
     map<std::string, Voyage> copieMvoyages = m_voyages; //afin de pouvoir supprimer le contenu de la map
     for (auto const & voyage : copieMvoyages)
     {
@@ -206,27 +201,30 @@ void DonneesGTFS::ajouterArretsDesVoyagesDeLaDate(const std::string &p_nomFichie
             m_voyages.erase(voyage.first);
         }
     }
-
-    //        if (voyageM.second.getNbArrets() > 0)
-    //        {
-    //           for (auto & arretsM : voyageM.second.getArrets())
-    //           {
-    //               unsigned int station_id = arretsM->getStationId();
-    //               m_stations.at(station_id).addArret(arretsM);
-    //           }
-     //       }
-
-
-    // Ajouter copie ptr aux arrêt de la station m_station TODO
-    //     for ( auto & stationM : m_stations) // est-ce je renomme stationM ? TODO
-    //    {
-    //        if(stationM.first == p_station_id)
-    //        {
-    //            stationM.second.addArret(ptrArret);
-    //        }
-    //    }
-
-
+    // Itère à travers les voyages, et pour chaque, ressort la liste des arrêts
+    // Ensuite, on itère dans la liste d'arrêt, on vérifie si la station d'un arrêt existe, si oui, on ajout le shrdPTR
+    for (const auto & voyage : m_voyages)
+    {
+        for (const auto &arret : voyage.second.getArrets())
+        {
+            m_nbArrets++;
+            unsigned int station_id = arret->getStationId();
+            if (m_stations.find(station_id) != m_stations.end())
+            {
+                m_stations.at(station_id).addArret(arret);
+            }
+        }
+    }
+    // Fait une copie de la map, pour ensuite itérer et supprimer les stations sans arrêts
+    std::map<unsigned int, Station> copieStations = m_stations;
+    for (const auto & station : copieStations)
+    {
+        if(station.second.getNbArrets() == 0)
+        {
+            m_stations.erase(station.first);
+        }
+    }
+    m_tousLesArretsPresents = true;
 }
 
 
