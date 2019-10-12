@@ -199,21 +199,17 @@ void DonneesGTFS::ajouterArretsDesVoyagesDeLaDate(const std::string &p_nomFichie
     }
     // nettoyage de m_voyages
 
-    for (auto & voyageM : this->m_voyages)
+/*    for (auto & voyageM : this->m_voyages)
     {
-        if (voyageM.second.getNbArrets() == 0)
+        string tripID = voyageM.first;
+        unsigned int stops = (this->m_voyages.at(tripID)).getNbArrets();
+        if (stops == 0)
         {
-            this->m_voyages.erase(voyageM.first);
+            this->m_voyages.erase(tripID);
         }
-// vérifier si les voyages sont bien supprimés, et si en supprimant les stations vide, ça arrange des affaires.
-/*        for (auto & stations : this->m_stations)
-        {
-            if (stations.second.getNbArrets() == 0)
-            {
-                this->m_stations.erase(stations.first);
-            }
-        }*/
-    }
+    }*/
+
+
 
 
 
