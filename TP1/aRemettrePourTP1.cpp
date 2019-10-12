@@ -83,7 +83,38 @@ void DonneesGTFS::ajouterStations(const std::string &p_nomFichier)
 //! \throws logic_error si tous les arrets de la date et de l'intervalle n'ont pas été ajoutés
 void DonneesGTFS::ajouterTransferts(const std::string &p_nomFichier)
 {
-    //écrire votre code ici
+    ifstream fichierTransferts(p_nomFichier);
+    if (fichierTransferts.bad()) {throw logic_error("fichier introuvable");} //Vérifie si le fichier existe
+    string lignesDuFichier;
+
+    while (getline(fichierTransferts, lignesDuFichier))
+    {
+        if (lignesDuFichier[0] != 'f') // pour éviter la première ligne du fichier (à changer ? TODO)
+        {
+            vector<string> transfertsVec = string_to_vector(lignesDuFichier, ',');
+            unsigned int from_station_id = stoi(transfertsVec[0]);
+            unsigned int to_station_id = stoi(transfertsVec[1]);
+            unsigned int min_transfer_time = stoi(transfertsVec[3]);
+            if (min_transfer_time == 0)
+            {
+                min_transfer_time = 1;
+            }
+            if ((m_stations.find(from_station_id) != m_stations.end()) &&
+            m_stations.find(to_station_id) != m_stations.end())
+            {
+                auto station = make_tuple(from_station_id, to_station_id, min_transfer_time);
+                m_transferts.push_back(station);
+            }
+        }
+    }
+    for (auto & transfert : m_transferts)
+    {
+        if(m_stations.find(get<0>(transfert)) != m_stations.end())
+        {
+            m_stationsDeTransfert.insert(get<0>(transfert));
+        }
+    }
+
 }
 
 
@@ -129,15 +160,14 @@ void DonneesGTFS::ajouterVoyagesDeLaDate(const std::string &p_nomFichier)
         if (lignesDuFichier[0] != 'r')
         {
             vector<string> servicesVec = string_to_vector(lignesDuFichier, ',');
-            // 0-route_id, 1-service_id, 2-trip_id, 3-trip_headsign, 4-trip_short_name, 5-direction_id, 6- block_id, 7-shape_id, 8-wheelchair_accessible
-            // Voyage(const std::string & p_id[2], unsigned int p_ligne_id[0], const std::string & p_service_id[1], const std::string & p_destination[3]);
-            // enlever les "" de destination
+
             string idVoyage = servicesVec[2];
             unsigned int idLigne = stoi(servicesVec[0]);
             string idService = servicesVec[1];
             string destinationVoyage = servicesVec[3];
-            destinationVoyage.erase(remove(destinationVoyage.begin(), destinationVoyage.end(), '\"'), destinationVoyage.end());
+            destinationVoyage.erase(remove(destinationVoyage.begin(), destinationVoyage.end(), '\"'),destinationVoyage.end());
 
+            // si le service existe, on ajoute le voyage de le conteneur
             if (m_services.find(idService) != m_services.end())
             {
                 Voyage newVoyage(idVoyage, idLigne, idService, destinationVoyage);
@@ -162,15 +192,10 @@ void DonneesGTFS::ajouterArretsDesVoyagesDeLaDate(const std::string &p_nomFichie
 
     while (getline(fichierArrets, lignesDuFichier)) {
         // ajout des arrêts au station en fonction du temps demandé
-        if (lignesDuFichier[0] != 't') // pour éviter la première ligne du fichier (à changer ? TODO)
+        if (lignesDuFichier[0] != 't')
         {
-            vector<string> arretsVec = string_to_vector(lignesDuFichier,
-                                                        ','); // est-ce necessaire de convertir en vec? TODO
-            // 0 - trip_id, 1 - arrival_time, 2 - departure_time, 3 - stop_id, 4 - stop_sequence, 5 - pickup_type, 6 - drop_off_type
-            // faire objet heure arrival time
-            // faire objet heure departure time
-            // if arrival time => now 1 && departure time <= now 2
-            // ajout de l'arrêt
+            vector<string> arretsVec = string_to_vector(lignesDuFichier,',');
+
             Heure heureArrive(stoi(arretsVec[1].substr(0, 2)),
                               stoi(arretsVec[1].substr(3, 2)),
                               stoi(arretsVec[1].substr(6, 2)));
@@ -178,13 +203,10 @@ void DonneesGTFS::ajouterArretsDesVoyagesDeLaDate(const std::string &p_nomFichie
                               stoi(arretsVec[1].substr(3, 2)),
                               stoi(arretsVec[1].substr(6, 2)));
 
-            if ((heureArrive >= m_now1) && (heureDepart < m_now2)
-                && (m_voyages.find(arretsVec[0]) != m_voyages.end())) {
-                // 0 - trip_id, 1 - arrival_time, 2 - departure_time, 3 - stop_id, 4 - stop_sequence, 5 - pickup_type, 6 - drop_off_type
-                // 	Arret(unsigned int p_station_id, const Heure & p_heure_arrivee, const Heure & p_heure_depart,
-                //          unsigned int p_numero_sequence, const std::string & p_voyage_id);
-                // cout << stoi(arretsVec[3]) << heureArrive << heureDepart << arretsVec[4] << arretsVec[0];
-                // Arret newArret(stoi(arretsVec[3]), heureArrive, heureDepart, stoi(arretsVec[4]), arretsVec[0]);
+            // on commence par vérifier si les heures corresponde avec ceux de l'objet
+            if ((heureArrive >= m_now1) && (heureDepart < m_now2)&& (m_voyages.find(arretsVec[0]) != m_voyages.end()))
+            {
+                // on ajoute ensuite l'arrêt
                 unsigned int p_station_id = stoi(arretsVec[3]);
                 Arret::Ptr ptrArret = make_shared<Arret>(p_station_id, heureArrive, heureDepart, stoi(arretsVec[4]),
                                                          arretsVec[0]);

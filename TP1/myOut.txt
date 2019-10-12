@@ -2,7 +2,7 @@ Nombre de lignes = 322
 Nombre de stations initiales = 4646
 Nombre de services = 1
 Nombre de stations ayant au moins 1 arret = 3341
-Nombre de transferts = 0
+Nombre de transferts = 488
 Nombres de voyages = 220
 Nombre d'arrets = 6879
 
@@ -3681,13 +3681,587 @@ LEBUS 999 : null - null
 
 ================================
    STATIONS DE TRANSFERT GTFS   
-   COMPTE = 0   
+   COMPTE = 86   
 ================================
+Station id: 1027
+Station id: 1083
+Station id: 1084
+Station id: 1163
+Station id: 1213
+Station id: 1243
+Station id: 1289
+Station id: 1324
+Station id: 1361
+Station id: 1380
+Station id: 1392
+Station id: 1400
+Station id: 1472
+Station id: 1485
+Station id: 1486
+Station id: 1504
+Station id: 1520
+Station id: 1521
+Station id: 1559
+Station id: 1575
+Station id: 1583
+Station id: 1736
+Station id: 1807
+Station id: 1830
+Station id: 1887
+Station id: 1910
+Station id: 1999
+Station id: 2009
+Station id: 2110
+Station id: 2116
+Station id: 2384
+Station id: 2441
+Station id: 2515
+Station id: 2539
+Station id: 2550
+Station id: 2559
+Station id: 2560
+Station id: 2568
+Station id: 2611
+Station id: 2633
+Station id: 2640
+Station id: 2677
+Station id: 2694
+Station id: 2874
+Station id: 2878
+Station id: 3023
+Station id: 3064
+Station id: 3102
+Station id: 3326
+Station id: 3328
+Station id: 3350
+Station id: 3351
+Station id: 3366
+Station id: 3451
+Station id: 3546
+Station id: 3569
+Station id: 3634
+Station id: 3924
+Station id: 3942
+Station id: 3943
+Station id: 4093
+Station id: 4148
+Station id: 4187
+Station id: 4716
+Station id: 5030
+Station id: 5156
+Station id: 5305
+Station id: 5522
+Station id: 5641
+Station id: 5690
+Station id: 5693
+Station id: 5695
+Station id: 5696
+Station id: 5697
+Station id: 5699
+Station id: 5700
+Station id: 5723
+Station id: 5726
+Station id: 5727
+Station id: 5728
+Station id: 5729
+Station id: 5730
+Station id: 5733
+Station id: 5734
+Station id: 5735
+Station id: 5736
 
 ========================
    TRANSFERTS GTFS   
-   COMPTE = 0   
+   COMPTE = 488   
 ========================
+De la station 1027 vers la station 3942 en 180 secondes
+De la station 1027 vers la station 1027 en 180 secondes
+De la station 1083 vers la station 1485 en 180 secondes
+De la station 1083 vers la station 1083 en 300 secondes
+De la station 1084 vers la station 1486 en 180 secondes
+De la station 1084 vers la station 1084 en 180 secondes
+De la station 1163 vers la station 1400 en 180 secondes
+De la station 1163 vers la station 1163 en 180 secondes
+De la station 1213 vers la station 1243 en 300 secondes
+De la station 1213 vers la station 1324 en 300 secondes
+De la station 1213 vers la station 1289 en 300 secondes
+De la station 1213 vers la station 1213 en 300 secondes
+De la station 1243 vers la station 1324 en 300 secondes
+De la station 1243 vers la station 1289 en 300 secondes
+De la station 1243 vers la station 1213 en 300 secondes
+De la station 1243 vers la station 1243 en 300 secondes
+De la station 1289 vers la station 1243 en 300 secondes
+De la station 1289 vers la station 1324 en 180 secondes
+De la station 1289 vers la station 1213 en 300 secondes
+De la station 1289 vers la station 1289 en 180 secondes
+De la station 1324 vers la station 1243 en 300 secondes
+De la station 1324 vers la station 1289 en 180 secondes
+De la station 1324 vers la station 1213 en 300 secondes
+De la station 1324 vers la station 1324 en 180 secondes
+De la station 1361 vers la station 3569 en 300 secondes
+De la station 1361 vers la station 5030 en 300 secondes
+De la station 1361 vers la station 3326 en 300 secondes
+De la station 1361 vers la station 5641 en 300 secondes
+De la station 1361 vers la station 3546 en 300 secondes
+De la station 1361 vers la station 3328 en 300 secondes
+De la station 1361 vers la station 2568 en 300 secondes
+De la station 1361 vers la station 2550 en 300 secondes
+De la station 1361 vers la station 1361 en 300 secondes
+De la station 1380 vers la station 1807 en 300 secondes
+De la station 1380 vers la station 1392 en 300 secondes
+De la station 1380 vers la station 1380 en 300 secondes
+De la station 1392 vers la station 1807 en 300 secondes
+De la station 1392 vers la station 1380 en 300 secondes
+De la station 1392 vers la station 1392 en 300 secondes
+De la station 1400 vers la station 1163 en 180 secondes
+De la station 1400 vers la station 1400 en 180 secondes
+De la station 1472 vers la station 1504 en 300 secondes
+De la station 1472 vers la station 1472 en 300 secondes
+De la station 1485 vers la station 1083 en 180 secondes
+De la station 1485 vers la station 1485 en 180 secondes
+De la station 1486 vers la station 1084 en 180 secondes
+De la station 1486 vers la station 1486 en 180 secondes
+De la station 1504 vers la station 1472 en 300 secondes
+De la station 1504 vers la station 1504 en 300 secondes
+De la station 1520 vers la station 1583 en 300 secondes
+De la station 1520 vers la station 1520 en 300 secondes
+De la station 1521 vers la station 1521 en 300 secondes
+De la station 1559 vers la station 1999 en 300 secondes
+De la station 1559 vers la station 1830 en 300 secondes
+De la station 1559 vers la station 1559 en 300 secondes
+De la station 1575 vers la station 1736 en 180 secondes
+De la station 1575 vers la station 1575 en 300 secondes
+De la station 1583 vers la station 1520 en 300 secondes
+De la station 1583 vers la station 1583 en 300 secondes
+De la station 1736 vers la station 1575 en 180 secondes
+De la station 1736 vers la station 1736 en 180 secondes
+De la station 1807 vers la station 1392 en 300 secondes
+De la station 1807 vers la station 1380 en 300 secondes
+De la station 1807 vers la station 1807 en 300 secondes
+De la station 1830 vers la station 1999 en 300 secondes
+De la station 1830 vers la station 1559 en 300 secondes
+De la station 1830 vers la station 1830 en 300 secondes
+De la station 1887 vers la station 3102 en 300 secondes
+De la station 1887 vers la station 2515 en 300 secondes
+De la station 1887 vers la station 1887 en 300 secondes
+De la station 1910 vers la station 2874 en 300 secondes
+De la station 1910 vers la station 5156 en 300 secondes
+De la station 1910 vers la station 1910 en 300 secondes
+De la station 1999 vers la station 1559 en 300 secondes
+De la station 1999 vers la station 1830 en 300 secondes
+De la station 1999 vers la station 1999 en 300 secondes
+De la station 2009 vers la station 2110 en 300 secondes
+De la station 2009 vers la station 2384 en 300 secondes
+De la station 2009 vers la station 2009 en 300 secondes
+De la station 2110 vers la station 2009 en 300 secondes
+De la station 2110 vers la station 2384 en 300 secondes
+De la station 2110 vers la station 2110 en 300 secondes
+De la station 2116 vers la station 2116 en 300 secondes
+De la station 2384 vers la station 2110 en 300 secondes
+De la station 2384 vers la station 2009 en 300 secondes
+De la station 2384 vers la station 2384 en 300 secondes
+De la station 2515 vers la station 3102 en 300 secondes
+De la station 2515 vers la station 1887 en 300 secondes
+De la station 2515 vers la station 2515 en 300 secondes
+De la station 2539 vers la station 2633 en 120 secondes
+De la station 2539 vers la station 2559 en 120 secondes
+De la station 2539 vers la station 3366 en 120 secondes
+De la station 2539 vers la station 3064 en 120 secondes
+De la station 2539 vers la station 2560 en 120 secondes
+De la station 2539 vers la station 2611 en 120 secondes
+De la station 2539 vers la station 3023 en 120 secondes
+De la station 2539 vers la station 3350 en 120 secondes
+De la station 2539 vers la station 2539 en 120 secondes
+De la station 2550 vers la station 3569 en 120 secondes
+De la station 2550 vers la station 5030 en 120 secondes
+De la station 2550 vers la station 3326 en 120 secondes
+De la station 2550 vers la station 5641 en 120 secondes
+De la station 2550 vers la station 3546 en 120 secondes
+De la station 2550 vers la station 1361 en 300 secondes
+De la station 2550 vers la station 3328 en 300 secondes
+De la station 2550 vers la station 2568 en 300 secondes
+De la station 2550 vers la station 2550 en 120 secondes
+De la station 2559 vers la station 2633 en 120 secondes
+De la station 2559 vers la station 3366 en 120 secondes
+De la station 2559 vers la station 3064 en 120 secondes
+De la station 2559 vers la station 2560 en 120 secondes
+De la station 2559 vers la station 2611 en 120 secondes
+De la station 2559 vers la station 2539 en 120 secondes
+De la station 2559 vers la station 3023 en 120 secondes
+De la station 2559 vers la station 3350 en 120 secondes
+De la station 2559 vers la station 2559 en 120 secondes
+De la station 2560 vers la station 2633 en 120 secondes
+De la station 2560 vers la station 2559 en 120 secondes
+De la station 2560 vers la station 3366 en 120 secondes
+De la station 2560 vers la station 3064 en 120 secondes
+De la station 2560 vers la station 2611 en 120 secondes
+De la station 2560 vers la station 2539 en 120 secondes
+De la station 2560 vers la station 3023 en 120 secondes
+De la station 2560 vers la station 3350 en 120 secondes
+De la station 2560 vers la station 2560 en 120 secondes
+De la station 2568 vers la station 3569 en 300 secondes
+De la station 2568 vers la station 5030 en 300 secondes
+De la station 2568 vers la station 3326 en 300 secondes
+De la station 2568 vers la station 5641 en 300 secondes
+De la station 2568 vers la station 3546 en 300 secondes
+De la station 2568 vers la station 1361 en 300 secondes
+De la station 2568 vers la station 3328 en 300 secondes
+De la station 2568 vers la station 2550 en 300 secondes
+De la station 2568 vers la station 2568 en 300 secondes
+De la station 2611 vers la station 2633 en 120 secondes
+De la station 2611 vers la station 2559 en 120 secondes
+De la station 2611 vers la station 3366 en 120 secondes
+De la station 2611 vers la station 3064 en 120 secondes
+De la station 2611 vers la station 2560 en 120 secondes
+De la station 2611 vers la station 2539 en 120 secondes
+De la station 2611 vers la station 3023 en 120 secondes
+De la station 2611 vers la station 3350 en 120 secondes
+De la station 2611 vers la station 2611 en 120 secondes
+De la station 2441 vers la station 2878 en 180 secondes
+De la station 2441 vers la station 2441 en 180 secondes
+De la station 2633 vers la station 3366 en 120 secondes
+De la station 2633 vers la station 3064 en 120 secondes
+De la station 2633 vers la station 2560 en 120 secondes
+De la station 2633 vers la station 2611 en 120 secondes
+De la station 2633 vers la station 2539 en 120 secondes
+De la station 2633 vers la station 3023 en 120 secondes
+De la station 2633 vers la station 2559 en 120 secondes
+De la station 2633 vers la station 3350 en 120 secondes
+De la station 2633 vers la station 2633 en 120 secondes
+De la station 2640 vers la station 3451 en 300 secondes
+De la station 2640 vers la station 3351 en 300 secondes
+De la station 2640 vers la station 2640 en 300 secondes
+De la station 2677 vers la station 3924 en 300 secondes
+De la station 2677 vers la station 4716 en 120 secondes
+De la station 2677 vers la station 2694 en 120 secondes
+De la station 2677 vers la station 2677 en 120 secondes
+De la station 2694 vers la station 2677 en 120 secondes
+De la station 2694 vers la station 3924 en 300 secondes
+De la station 2694 vers la station 4716 en 120 secondes
+De la station 2694 vers la station 2694 en 120 secondes
+De la station 2874 vers la station 1910 en 300 secondes
+De la station 2874 vers la station 5156 en 300 secondes
+De la station 2874 vers la station 2874 en 300 secondes
+De la station 2878 vers la station 2441 en 180 secondes
+De la station 2878 vers la station 2878 en 180 secondes
+De la station 3023 vers la station 2633 en 120 secondes
+De la station 3023 vers la station 2559 en 120 secondes
+De la station 3023 vers la station 3366 en 120 secondes
+De la station 3023 vers la station 3064 en 120 secondes
+De la station 3023 vers la station 2560 en 120 secondes
+De la station 3023 vers la station 2611 en 120 secondes
+De la station 3023 vers la station 2539 en 120 secondes
+De la station 3023 vers la station 3350 en 120 secondes
+De la station 3023 vers la station 3023 en 120 secondes
+De la station 3064 vers la station 2633 en 120 secondes
+De la station 3064 vers la station 2559 en 120 secondes
+De la station 3064 vers la station 3366 en 120 secondes
+De la station 3064 vers la station 2560 en 120 secondes
+De la station 3064 vers la station 2611 en 120 secondes
+De la station 3064 vers la station 2539 en 120 secondes
+De la station 3064 vers la station 3023 en 120 secondes
+De la station 3064 vers la station 3350 en 120 secondes
+De la station 3064 vers la station 3064 en 120 secondes
+De la station 3102 vers la station 1887 en 300 secondes
+De la station 3102 vers la station 2515 en 300 secondes
+De la station 3102 vers la station 3102 en 300 secondes
+De la station 3326 vers la station 3569 en 120 secondes
+De la station 3326 vers la station 5030 en 120 secondes
+De la station 3326 vers la station 5641 en 120 secondes
+De la station 3326 vers la station 3546 en 120 secondes
+De la station 3326 vers la station 1361 en 300 secondes
+De la station 3326 vers la station 3328 en 300 secondes
+De la station 3326 vers la station 2568 en 300 secondes
+De la station 3326 vers la station 2550 en 120 secondes
+De la station 3326 vers la station 3326 en 120 secondes
+De la station 3328 vers la station 3569 en 300 secondes
+De la station 3328 vers la station 5030 en 300 secondes
+De la station 3328 vers la station 3326 en 300 secondes
+De la station 3328 vers la station 5641 en 300 secondes
+De la station 3328 vers la station 3546 en 300 secondes
+De la station 3328 vers la station 1361 en 300 secondes
+De la station 3328 vers la station 2568 en 300 secondes
+De la station 3328 vers la station 2550 en 300 secondes
+De la station 3328 vers la station 3328 en 300 secondes
+De la station 3350 vers la station 2633 en 120 secondes
+De la station 3350 vers la station 2559 en 120 secondes
+De la station 3350 vers la station 3366 en 120 secondes
+De la station 3350 vers la station 3064 en 120 secondes
+De la station 3350 vers la station 2560 en 120 secondes
+De la station 3350 vers la station 2611 en 120 secondes
+De la station 3350 vers la station 2539 en 120 secondes
+De la station 3350 vers la station 3023 en 120 secondes
+De la station 3350 vers la station 3350 en 120 secondes
+De la station 3351 vers la station 2640 en 300 secondes
+De la station 3351 vers la station 3451 en 300 secondes
+De la station 3351 vers la station 3351 en 300 secondes
+De la station 3366 vers la station 2633 en 120 secondes
+De la station 3366 vers la station 2559 en 120 secondes
+De la station 3366 vers la station 3064 en 120 secondes
+De la station 3366 vers la station 2560 en 120 secondes
+De la station 3366 vers la station 2611 en 120 secondes
+De la station 3366 vers la station 2539 en 120 secondes
+De la station 3366 vers la station 3023 en 120 secondes
+De la station 3366 vers la station 3350 en 120 secondes
+De la station 3366 vers la station 3366 en 120 secondes
+De la station 3451 vers la station 2640 en 300 secondes
+De la station 3451 vers la station 3351 en 300 secondes
+De la station 3451 vers la station 3451 en 300 secondes
+De la station 3546 vers la station 3569 en 120 secondes
+De la station 3546 vers la station 5030 en 120 secondes
+De la station 3546 vers la station 3326 en 120 secondes
+De la station 3546 vers la station 5641 en 120 secondes
+De la station 3546 vers la station 1361 en 300 secondes
+De la station 3546 vers la station 3328 en 300 secondes
+De la station 3546 vers la station 2568 en 300 secondes
+De la station 3546 vers la station 2550 en 120 secondes
+De la station 3546 vers la station 3546 en 120 secondes
+De la station 3569 vers la station 5030 en 120 secondes
+De la station 3569 vers la station 3326 en 120 secondes
+De la station 3569 vers la station 5641 en 120 secondes
+De la station 3569 vers la station 3546 en 120 secondes
+De la station 3569 vers la station 1361 en 300 secondes
+De la station 3569 vers la station 3328 en 300 secondes
+De la station 3569 vers la station 2568 en 300 secondes
+De la station 3569 vers la station 2550 en 120 secondes
+De la station 3569 vers la station 3569 en 120 secondes
+De la station 3634 vers la station 4093 en 1 secondes
+De la station 3634 vers la station 4187 en 1 secondes
+De la station 3634 vers la station 5305 en 1 secondes
+De la station 3634 vers la station 4148 en 1 secondes
+De la station 3634 vers la station 3634 en 1 secondes
+De la station 3924 vers la station 2677 en 300 secondes
+De la station 3924 vers la station 4716 en 300 secondes
+De la station 3924 vers la station 2694 en 300 secondes
+De la station 3924 vers la station 3924 en 300 secondes
+De la station 3942 vers la station 1027 en 180 secondes
+De la station 3942 vers la station 3942 en 300 secondes
+De la station 3943 vers la station 5697 en 300 secondes
+De la station 3943 vers la station 5696 en 300 secondes
+De la station 3943 vers la station 5695 en 300 secondes
+De la station 3943 vers la station 5693 en 300 secondes
+De la station 3943 vers la station 5522 en 300 secondes
+De la station 3943 vers la station 5700 en 300 secondes
+De la station 3943 vers la station 5699 en 300 secondes
+De la station 3943 vers la station 5690 en 300 secondes
+De la station 3943 vers la station 3943 en 300 secondes
+De la station 4093 vers la station 4187 en 1 secondes
+De la station 4093 vers la station 5305 en 1 secondes
+De la station 4093 vers la station 4148 en 1 secondes
+De la station 4093 vers la station 3634 en 1 secondes
+De la station 4093 vers la station 4093 en 1 secondes
+De la station 4148 vers la station 4093 en 1 secondes
+De la station 4148 vers la station 4187 en 1 secondes
+De la station 4148 vers la station 5305 en 1 secondes
+De la station 4148 vers la station 3634 en 1 secondes
+De la station 4148 vers la station 4148 en 1 secondes
+De la station 4187 vers la station 4093 en 1 secondes
+De la station 4187 vers la station 5305 en 1 secondes
+De la station 4187 vers la station 4148 en 1 secondes
+De la station 4187 vers la station 3634 en 1 secondes
+De la station 4187 vers la station 4187 en 1 secondes
+De la station 4716 vers la station 2677 en 120 secondes
+De la station 4716 vers la station 3924 en 300 secondes
+De la station 4716 vers la station 2694 en 120 secondes
+De la station 4716 vers la station 4716 en 120 secondes
+De la station 5030 vers la station 3569 en 120 secondes
+De la station 5030 vers la station 3326 en 120 secondes
+De la station 5030 vers la station 5641 en 120 secondes
+De la station 5030 vers la station 3546 en 120 secondes
+De la station 5030 vers la station 1361 en 300 secondes
+De la station 5030 vers la station 3328 en 300 secondes
+De la station 5030 vers la station 2568 en 300 secondes
+De la station 5030 vers la station 2550 en 120 secondes
+De la station 5030 vers la station 5030 en 120 secondes
+De la station 5156 vers la station 2874 en 300 secondes
+De la station 5156 vers la station 1910 en 300 secondes
+De la station 5156 vers la station 5156 en 300 secondes
+De la station 5305 vers la station 4093 en 1 secondes
+De la station 5305 vers la station 4187 en 1 secondes
+De la station 5305 vers la station 4148 en 1 secondes
+De la station 5305 vers la station 3634 en 1 secondes
+De la station 5305 vers la station 5305 en 1 secondes
+De la station 5522 vers la station 5696 en 120 secondes
+De la station 5522 vers la station 5695 en 120 secondes
+De la station 5522 vers la station 5697 en 120 secondes
+De la station 5522 vers la station 5693 en 120 secondes
+De la station 5522 vers la station 5700 en 120 secondes
+De la station 5522 vers la station 5699 en 120 secondes
+De la station 5522 vers la station 3943 en 300 secondes
+De la station 5522 vers la station 5690 en 300 secondes
+De la station 5522 vers la station 5522 en 120 secondes
+De la station 5641 vers la station 3569 en 120 secondes
+De la station 5641 vers la station 5030 en 120 secondes
+De la station 5641 vers la station 3326 en 120 secondes
+De la station 5641 vers la station 3546 en 120 secondes
+De la station 5641 vers la station 1361 en 300 secondes
+De la station 5641 vers la station 3328 en 300 secondes
+De la station 5641 vers la station 2568 en 300 secondes
+De la station 5641 vers la station 2550 en 120 secondes
+De la station 5641 vers la station 5641 en 120 secondes
+De la station 5690 vers la station 5696 en 300 secondes
+De la station 5690 vers la station 5695 en 300 secondes
+De la station 5690 vers la station 5697 en 300 secondes
+De la station 5690 vers la station 5693 en 300 secondes
+De la station 5690 vers la station 5522 en 300 secondes
+De la station 5690 vers la station 5700 en 300 secondes
+De la station 5690 vers la station 5699 en 300 secondes
+De la station 5690 vers la station 3943 en 300 secondes
+De la station 5690 vers la station 5690 en 300 secondes
+De la station 5693 vers la station 5696 en 120 secondes
+De la station 5693 vers la station 5695 en 120 secondes
+De la station 5693 vers la station 5697 en 120 secondes
+De la station 5693 vers la station 5522 en 120 secondes
+De la station 5693 vers la station 5700 en 120 secondes
+De la station 5693 vers la station 5699 en 120 secondes
+De la station 5693 vers la station 3943 en 300 secondes
+De la station 5693 vers la station 5690 en 300 secondes
+De la station 5693 vers la station 5693 en 120 secondes
+De la station 5695 vers la station 5696 en 120 secondes
+De la station 5695 vers la station 5697 en 120 secondes
+De la station 5695 vers la station 5693 en 120 secondes
+De la station 5695 vers la station 5522 en 120 secondes
+De la station 5695 vers la station 5700 en 120 secondes
+De la station 5695 vers la station 5699 en 120 secondes
+De la station 5695 vers la station 3943 en 300 secondes
+De la station 5695 vers la station 5690 en 300 secondes
+De la station 5695 vers la station 5695 en 120 secondes
+De la station 5696 vers la station 5695 en 120 secondes
+De la station 5696 vers la station 5697 en 120 secondes
+De la station 5696 vers la station 5693 en 120 secondes
+De la station 5696 vers la station 5522 en 120 secondes
+De la station 5696 vers la station 5700 en 120 secondes
+De la station 5696 vers la station 5699 en 120 secondes
+De la station 5696 vers la station 3943 en 300 secondes
+De la station 5696 vers la station 5690 en 300 secondes
+De la station 5696 vers la station 5696 en 120 secondes
+De la station 5697 vers la station 5696 en 120 secondes
+De la station 5697 vers la station 5695 en 120 secondes
+De la station 5697 vers la station 5693 en 120 secondes
+De la station 5697 vers la station 5522 en 120 secondes
+De la station 5697 vers la station 5700 en 120 secondes
+De la station 5697 vers la station 5699 en 120 secondes
+De la station 5697 vers la station 3943 en 300 secondes
+De la station 5697 vers la station 5690 en 300 secondes
+De la station 5697 vers la station 5697 en 120 secondes
+De la station 5699 vers la station 5696 en 120 secondes
+De la station 5699 vers la station 5695 en 120 secondes
+De la station 5699 vers la station 5697 en 120 secondes
+De la station 5699 vers la station 5693 en 120 secondes
+De la station 5699 vers la station 5522 en 120 secondes
+De la station 5699 vers la station 5700 en 120 secondes
+De la station 5699 vers la station 3943 en 300 secondes
+De la station 5699 vers la station 5690 en 300 secondes
+De la station 5699 vers la station 5699 en 120 secondes
+De la station 5700 vers la station 5696 en 120 secondes
+De la station 5700 vers la station 5695 en 120 secondes
+De la station 5700 vers la station 5697 en 120 secondes
+De la station 5700 vers la station 5693 en 120 secondes
+De la station 5700 vers la station 5522 en 120 secondes
+De la station 5700 vers la station 5699 en 120 secondes
+De la station 5700 vers la station 3943 en 300 secondes
+De la station 5700 vers la station 5690 en 300 secondes
+De la station 5700 vers la station 5700 en 120 secondes
+De la station 5723 vers la station 5730 en 120 secondes
+De la station 5723 vers la station 5733 en 120 secondes
+De la station 5723 vers la station 5726 en 120 secondes
+De la station 5723 vers la station 5734 en 120 secondes
+De la station 5723 vers la station 5729 en 120 secondes
+De la station 5723 vers la station 5736 en 180 secondes
+De la station 5723 vers la station 5735 en 180 secondes
+De la station 5723 vers la station 5727 en 120 secondes
+De la station 5723 vers la station 5728 en 120 secondes
+De la station 5723 vers la station 5723 en 120 secondes
+De la station 5726 vers la station 5730 en 120 secondes
+De la station 5726 vers la station 5723 en 120 secondes
+De la station 5726 vers la station 5733 en 120 secondes
+De la station 5726 vers la station 5734 en 120 secondes
+De la station 5726 vers la station 5729 en 120 secondes
+De la station 5726 vers la station 5736 en 180 secondes
+De la station 5726 vers la station 5735 en 180 secondes
+De la station 5726 vers la station 5727 en 120 secondes
+De la station 5726 vers la station 5728 en 120 secondes
+De la station 5726 vers la station 5726 en 120 secondes
+De la station 5727 vers la station 5730 en 120 secondes
+De la station 5727 vers la station 5723 en 120 secondes
+De la station 5727 vers la station 5733 en 120 secondes
+De la station 5727 vers la station 5726 en 120 secondes
+De la station 5727 vers la station 5734 en 120 secondes
+De la station 5727 vers la station 5729 en 120 secondes
+De la station 5727 vers la station 5736 en 180 secondes
+De la station 5727 vers la station 5735 en 180 secondes
+De la station 5727 vers la station 5728 en 120 secondes
+De la station 5727 vers la station 5727 en 120 secondes
+De la station 5728 vers la station 5730 en 120 secondes
+De la station 5728 vers la station 5723 en 120 secondes
+De la station 5728 vers la station 5733 en 120 secondes
+De la station 5728 vers la station 5726 en 120 secondes
+De la station 5728 vers la station 5734 en 120 secondes
+De la station 5728 vers la station 5729 en 120 secondes
+De la station 5728 vers la station 5736 en 180 secondes
+De la station 5728 vers la station 5735 en 180 secondes
+De la station 5728 vers la station 5727 en 120 secondes
+De la station 5728 vers la station 5728 en 120 secondes
+De la station 5729 vers la station 5730 en 120 secondes
+De la station 5729 vers la station 5723 en 120 secondes
+De la station 5729 vers la station 5733 en 120 secondes
+De la station 5729 vers la station 5726 en 120 secondes
+De la station 5729 vers la station 5734 en 120 secondes
+De la station 5729 vers la station 5736 en 180 secondes
+De la station 5729 vers la station 5735 en 180 secondes
+De la station 5729 vers la station 5727 en 120 secondes
+De la station 5729 vers la station 5728 en 120 secondes
+De la station 5729 vers la station 5729 en 120 secondes
+De la station 5730 vers la station 5723 en 120 secondes
+De la station 5730 vers la station 5733 en 120 secondes
+De la station 5730 vers la station 5726 en 120 secondes
+De la station 5730 vers la station 5734 en 120 secondes
+De la station 5730 vers la station 5729 en 120 secondes
+De la station 5730 vers la station 5736 en 180 secondes
+De la station 5730 vers la station 5735 en 180 secondes
+De la station 5730 vers la station 5727 en 120 secondes
+De la station 5730 vers la station 5728 en 120 secondes
+De la station 5730 vers la station 5730 en 120 secondes
+De la station 5733 vers la station 5730 en 120 secondes
+De la station 5733 vers la station 5723 en 120 secondes
+De la station 5733 vers la station 5726 en 120 secondes
+De la station 5733 vers la station 5734 en 120 secondes
+De la station 5733 vers la station 5729 en 120 secondes
+De la station 5733 vers la station 5736 en 180 secondes
+De la station 5733 vers la station 5735 en 180 secondes
+De la station 5733 vers la station 5727 en 120 secondes
+De la station 5733 vers la station 5728 en 120 secondes
+De la station 5733 vers la station 5733 en 120 secondes
+De la station 5734 vers la station 5730 en 120 secondes
+De la station 5734 vers la station 5723 en 120 secondes
+De la station 5734 vers la station 5733 en 120 secondes
+De la station 5734 vers la station 5726 en 120 secondes
+De la station 5734 vers la station 5729 en 120 secondes
+De la station 5734 vers la station 5736 en 180 secondes
+De la station 5734 vers la station 5735 en 180 secondes
+De la station 5734 vers la station 5727 en 120 secondes
+De la station 5734 vers la station 5728 en 120 secondes
+De la station 5734 vers la station 5734 en 120 secondes
+De la station 5735 vers la station 5730 en 240 secondes
+De la station 5735 vers la station 5723 en 240 secondes
+De la station 5735 vers la station 5733 en 240 secondes
+De la station 5735 vers la station 5726 en 240 secondes
+De la station 5735 vers la station 5734 en 240 secondes
+De la station 5735 vers la station 5729 en 240 secondes
+De la station 5735 vers la station 5736 en 240 secondes
+De la station 5735 vers la station 5727 en 240 secondes
+De la station 5735 vers la station 5728 en 240 secondes
+De la station 5735 vers la station 5735 en 240 secondes
+De la station 5736 vers la station 5730 en 240 secondes
+De la station 5736 vers la station 5723 en 240 secondes
+De la station 5736 vers la station 5733 en 240 secondes
+De la station 5736 vers la station 5726 en 240 secondes
+De la station 5736 vers la station 5734 en 240 secondes
+De la station 5736 vers la station 5729 en 240 secondes
+De la station 5736 vers la station 5735 en 240 secondes
+De la station 5736 vers la station 5727 en 240 secondes
+De la station 5736 vers la station 5728 en 240 secondes
+De la station 5736 vers la station 5736 en 240 secondes
 
 =====================================
    VOYAGES DE LA JOURNÉE DU 2019-09-21
