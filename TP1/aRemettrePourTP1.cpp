@@ -34,8 +34,8 @@ void DonneesGTFS::ajouterLignes(const std::string &p_nomFichier)
             // Ligne(unsigned int p_id, const std::string & p_numero, const std::string & p_description, const CategorieBus& p_categorie);
 
             Ligne nouvelleLigne(id, numero, p_description, categorie);
-            this->m_lignes[id] = nouvelleLigne;
-            this->m_lignes_par_numero.insert(make_pair(numero, nouvelleLigne));
+            m_lignes[id] = nouvelleLigne;
+            m_lignes_par_numero.insert(make_pair(numero, nouvelleLigne));
 
             ligneVec.clear(); //supprime le contenu du vecteur après utilisation
         }
@@ -67,7 +67,7 @@ void DonneesGTFS::ajouterStations(const std::string &p_nomFichier)
             Coordonnees coordStation(stod(arretVec[3]), stod(arretVec[4]));
 
             Station newStation(stoi(arretVec[0]), p_nom, p_description, coordStation);
-            this->m_stations[stoi(arretVec[0])] = newStation;
+            m_stations[stoi(arretVec[0])] = newStation;
             arretVec.clear();
         }
     }
@@ -105,9 +105,9 @@ void DonneesGTFS::ajouterServices(const std::string &p_nomFichier)
                     stoi(servicesVec[1].substr(4,2)),
                     stoi(servicesVec[1].substr(6,2)));
 
-            if (servicesVec[2] == "1" && this->m_date == dateDeService)
+            if (servicesVec[2] == "1" && m_date == dateDeService)
             {
-                this->m_services.insert(servicesVec[0]);
+                m_services.insert(servicesVec[0]);
             }
             servicesVec.clear();
         }
@@ -140,10 +140,10 @@ void DonneesGTFS::ajouterVoyagesDeLaDate(const std::string &p_nomFichier)
             string destinationVoyage = servicesVec[3];
             destinationVoyage.erase(remove(destinationVoyage.begin(), destinationVoyage.end(), '\"'), destinationVoyage.end());
 
-            if (this->m_services.find(idService) != this->m_services.end())
+            if (m_services.find(idService) != m_services.end())
             {
                 Voyage newVoyage(idVoyage, idLigne, idService, destinationVoyage);
-                this->m_voyages[newVoyage.getId()] = newVoyage;
+                m_voyages[newVoyage.getId()] = newVoyage;
             }
             servicesVec.clear();
         }
@@ -156,75 +156,69 @@ void DonneesGTFS::ajouterVoyagesDeLaDate(const std::string &p_nomFichier)
 //! \param[in] p_nomFichier: le nom du fichier contenant les arrets
 //! \post assigne m_tousLesArretsPresents à true
 //! \throws logic_error si un problème survient avec la lecture du fichier
-void DonneesGTFS::ajouterArretsDesVoyagesDeLaDate(const std::string &p_nomFichier)
-{
+void DonneesGTFS::ajouterArretsDesVoyagesDeLaDate(const std::string &p_nomFichier) {
 
     ifstream fichierArrets(p_nomFichier);
-    if (fichierArrets.bad()) {throw logic_error("fichier introuvable");} //Vérifie si le fichier existe
+    if (fichierArrets.bad()) { throw logic_error("fichier introuvable"); } //Vérifie si le fichier existe
     string lignesDuFichier;
 
-    while (getline(fichierArrets, lignesDuFichier))
-    {
+    while (getline(fichierArrets, lignesDuFichier)) {
         // ajout des arrêts au station en fonction du temps demandé
         if (lignesDuFichier[0] != 't') // pour éviter la première ligne du fichier (à changer ? TODO)
         {
-            vector<string> arretsVec = string_to_vector(lignesDuFichier, ','); // est-ce necessaire de convertir en vec? TODO
+            vector<string> arretsVec = string_to_vector(lignesDuFichier,
+                                                        ','); // est-ce necessaire de convertir en vec? TODO
             // 0 - trip_id, 1 - arrival_time, 2 - departure_time, 3 - stop_id, 4 - stop_sequence, 5 - pickup_type, 6 - drop_off_type
             // faire objet heure arrival time
             // faire objet heure departure time
             // if arrival time => now 1 && departure time <= now 2
-                // ajout de l'arrêt
-            Heure heureArrive(stoi(arretsVec[1].substr(0,2)),
-                              stoi(arretsVec[1].substr(3,2)),
-                              stoi(arretsVec[1].substr(6,2)));
-            Heure heureDepart(stoi(arretsVec[1].substr(0,2)),
-                              stoi(arretsVec[1].substr(3,2)),
-                              stoi(arretsVec[1].substr(6,2)));
+            // ajout de l'arrêt
+            Heure heureArrive(stoi(arretsVec[1].substr(0, 2)),
+                              stoi(arretsVec[1].substr(3, 2)),
+                              stoi(arretsVec[1].substr(6, 2)));
+            Heure heureDepart(stoi(arretsVec[1].substr(0, 2)),
+                              stoi(arretsVec[1].substr(3, 2)),
+                              stoi(arretsVec[1].substr(6, 2)));
 
-            if ((heureArrive >= this->m_now1) && (heureDepart <= this->m_now2)
-                && (this->m_voyages.find(arretsVec[0]) != this->m_voyages.end()))
-            {
+            if ((heureArrive >= m_now1) && (heureDepart <= m_now2)
+                && (m_voyages.find(arretsVec[0]) != m_voyages.end())) {
                 // 0 - trip_id, 1 - arrival_time, 2 - departure_time, 3 - stop_id, 4 - stop_sequence, 5 - pickup_type, 6 - drop_off_type
                 // 	Arret(unsigned int p_station_id, const Heure & p_heure_arrivee, const Heure & p_heure_depart,
                 //          unsigned int p_numero_sequence, const std::string & p_voyage_id);
                 // cout << stoi(arretsVec[3]) << heureArrive << heureDepart << arretsVec[4] << arretsVec[0];
                 // Arret newArret(stoi(arretsVec[3]), heureArrive, heureDepart, stoi(arretsVec[4]), arretsVec[0]);
                 unsigned int p_station_id = stoi(arretsVec[3]);
-                Arret::Ptr ptrArret = make_shared<Arret>(p_station_id, heureArrive, heureDepart, stoi(arretsVec[4]), arretsVec[0]);
-                this->m_voyages[arretsVec[0]].ajouterArret(ptrArret);
-                // this->m_voyages.at(arretsVec[0]).ajouterArret(ptrArret);
+                Arret::Ptr ptrArret = make_shared<Arret>(p_station_id, heureArrive, heureDepart, stoi(arretsVec[4]),
+                                                         arretsVec[0]);
+                m_voyages[arretsVec[0]].ajouterArret(ptrArret);
+                // m_voyages.at(arretsVec[0]).ajouterArret(ptrArret);
 
             }
         }
     }
     // nettoyage de m_voyages
 
-/*    for (auto & voyageM : this->m_voyages)
+    map<std::string, Voyage> copieMvoyages = m_voyages; //afin de pouvoir supprimer le contenu de la map
+    for (auto const & voyage : copieMvoyages)
     {
-        string tripID = voyageM.first;
-        unsigned int stops = (this->m_voyages.at(tripID)).getNbArrets();
-        if (stops == 0)
+        if (voyage.second.getNbArrets() == 0)
         {
-            this->m_voyages.erase(tripID);
+            m_voyages.erase(voyage.first);
         }
-    }*/
-
-
-
-
+    }
 
     //        if (voyageM.second.getNbArrets() > 0)
     //        {
     //           for (auto & arretsM : voyageM.second.getArrets())
     //           {
     //               unsigned int station_id = arretsM->getStationId();
-    //               this->m_stations.at(station_id).addArret(arretsM);
+    //               m_stations.at(station_id).addArret(arretsM);
     //           }
-    //        }
+     //       }
 
 
     // Ajouter copie ptr aux arrêt de la station m_station TODO
-    //     for ( auto & stationM : this->m_stations) // est-ce je renomme stationM ? TODO
+    //     for ( auto & stationM : m_stations) // est-ce je renomme stationM ? TODO
     //    {
     //        if(stationM.first == p_station_id)
     //        {
