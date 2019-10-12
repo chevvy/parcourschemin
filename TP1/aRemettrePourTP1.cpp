@@ -23,15 +23,11 @@ void DonneesGTFS::ajouterLignes(const std::string &p_nomFichier)
             vector<string> ligneVec = string_to_vector(lignesDuFichier, ',');
 
             unsigned int id = stoi(ligneVec[0]);
-
             string numero = ligneVec[2];
             numero.erase(remove(numero.begin(), numero.end(), '\"'), numero.end());
-
             string p_description = ligneVec[4];
             p_description.erase(remove(p_description.begin(), p_description.end(), '\"'), p_description.end());
-
             CategorieBus categorie = Ligne::couleurToCategorie(ligneVec[7]);
-            // Ligne(unsigned int p_id, const std::string & p_numero, const std::string & p_description, const CategorieBus& p_categorie);
 
             Ligne nouvelleLigne(id, numero, p_description, categorie);
             m_lignes[id] = nouvelleLigne;
@@ -54,16 +50,14 @@ void DonneesGTFS::ajouterStations(const std::string &p_nomFichier)
 
     while (getline( fichierStations, lignesDuFichier))
     {
-        if (lignesDuFichier[0] != 's') // pour éviter la première ligne du fichier (à changer ? TODO)
+        if (lignesDuFichier[0] != 's')
         {
             vector<string> arretVec = string_to_vector(lignesDuFichier, ',');
 
             string p_nom = arretVec[1];
             p_nom.erase(remove(p_nom.begin(), p_nom.end(), '\"'), p_nom.end());
-
             string p_description = arretVec[2];
             p_description.erase(remove(p_description.begin(), p_description.end(), '\"'), p_description.end());
-
             Coordonnees coordStation(stod(arretVec[3]), stod(arretVec[4]));
 
             Station newStation(stoi(arretVec[0]), p_nom, p_description, coordStation);
@@ -89,16 +83,18 @@ void DonneesGTFS::ajouterTransferts(const std::string &p_nomFichier)
 
     while (getline(fichierTransferts, lignesDuFichier))
     {
-        if (lignesDuFichier[0] != 'f') // pour éviter la première ligne du fichier (à changer ? TODO)
+        if (lignesDuFichier[0] != 'f')
         {
             vector<string> transfertsVec = string_to_vector(lignesDuFichier, ',');
             unsigned int from_station_id = stoi(transfertsVec[0]);
             unsigned int to_station_id = stoi(transfertsVec[1]);
             unsigned int min_transfer_time = stoi(transfertsVec[3]);
+            // ajuste le temps de transfert s'il est à 0
             if (min_transfer_time == 0)
             {
                 min_transfer_time = 1;
             }
+            // pour ajouter un transfert, il faut que les deux stations soient présentent dans m_station
             if ((m_stations.find(from_station_id) != m_stations.end()) &&
             m_stations.find(to_station_id) != m_stations.end())
             {
@@ -107,6 +103,7 @@ void DonneesGTFS::ajouterTransferts(const std::string &p_nomFichier)
             }
         }
     }
+    // on vient ajouter les station de transfert dans le conteneur m_stationsDeTransfert en fonction de leur existence
     for (auto & transfert : m_transferts)
     {
         if(m_stations.find(get<0>(transfert)) != m_stations.end())
@@ -114,7 +111,6 @@ void DonneesGTFS::ajouterTransferts(const std::string &p_nomFichier)
             m_stationsDeTransfert.insert(get<0>(transfert));
         }
     }
-
 }
 
 

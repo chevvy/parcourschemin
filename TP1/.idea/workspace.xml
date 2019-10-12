@@ -15,10 +15,6 @@
     <list default="true" id="720ae09a-9464-4908-aaec-a81df76f9bb9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aRemettrePourTP1.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/aRemettrePourTP1.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TP1.dir/aRemettrePourTP1.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TP1.dir/aRemettrePourTP1.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libTP1.a" beforeDir="false" afterPath="$PROJECT_DIR$/libTP1.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main" beforeDir="false" afterPath="$PROJECT_DIR$/main" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myOut.txt" beforeDir="false" afterPath="$PROJECT_DIR$/myOut.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -101,7 +97,7 @@
       <workItem from="1570646964270" duration="3693000" />
       <workItem from="1570719689305" duration="13201000" />
       <workItem from="1570800072291" duration="16238000" />
-      <workItem from="1570882639155" duration="11238000" />
+      <workItem from="1570882639155" duration="11462000" />
     </task>
     <servers />
   </component>
