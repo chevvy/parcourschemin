@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
-    <generated />
+    <generated>
+      <config projectName="TP2" targetName="GRAPHE" />
+      <config projectName="TP2" targetName="TP2" />
+      <config projectName="TP2" targetName="main" />
+    </generated>
   </component>
   <component name="CMakeSettings">
     <configurations>
@@ -9,7 +13,27 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a65ae4de-5eb5-4fda-9dc8-c38c539d2f9d" name="Default Changelist" comment="" />
+    <list default="true" id="a65ae4de-5eb5-4fda-9dc8-c38c539d2f9d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../AutresIntnéraires.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RTC-23juil-29nov/Horaire_Boucle_Partage.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RTC-23juil-29nov/__licence.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RTC-23juil-29nov/__lisez-moi.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RTC-23juil-29nov/agency.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RTC-23juil-29nov/calendar_dates.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RTC-23juil-29nov/feed_info.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RTC-23juil-29nov/routes.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RTC-23juil-29nov/shapes.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RTC-23juil-29nov/stop_times.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RTC-23juil-29nov/stops.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RTC-23juil-29nov/transfers.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RTC-23juil-29nov/trips.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libGRAPHE.a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libTP2.a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../out.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,10 +43,24 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1T7TDDBp8tWE5QggEtqhqpsNp33" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -36,6 +74,28 @@
       </list>
     </option>
   </component>
+  <component name="RunManager" selected="CMake Application.main">
+    <configuration name="GRAPHE" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TP2" TARGET_NAME="GRAPHE" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TP2" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TP2" TARGET_NAME="TP2" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="main" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TP2" TARGET_NAME="main" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="TP2" RUN_TARGET_NAME="main">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.GRAPHE" />
+      <item itemvalue="CMake Application.main" />
+      <item itemvalue="CMake Application.TP2" />
+    </list>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -47,10 +107,25 @@
       <option name="presentableId" value="Default" />
       <updated>1572810012566</updated>
       <workItem from="1572810015167" duration="33000" />
+      <workItem from="1572812820537" duration="1624000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
