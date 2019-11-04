@@ -2,8 +2,8 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="TP2" targetName="GRAPHE" />
       <config projectName="TP2" targetName="TP2" />
+      <config projectName="TP2" targetName="GRAPHE" />
       <config projectName="TP2" targetName="main" />
     </generated>
   </component>
@@ -16,8 +16,6 @@
     <list default="true" id="a65ae4de-5eb5-4fda-9dc8-c38c539d2f9d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aRemettrePourTP2.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/aRemettrePourTP2.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libTP2.a" beforeDir="false" afterPath="$PROJECT_DIR$/libTP2.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main" beforeDir="false" afterPath="$PROJECT_DIR$/main" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,6 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectId" id="1T7TDDBp8tWE5QggEtqhqpsNp33" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -47,7 +46,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -95,6 +94,11 @@
       <updated>1572810012566</updated>
       <workItem from="1572810015167" duration="33000" />
       <workItem from="1572812820537" duration="13384000" />
+      <workItem from="1572898056837" duration="189000" />
+      <workItem from="1572898397873" duration="115000" />
+      <workItem from="1572898661653" duration="31000" />
+      <workItem from="1572899552798" duration="630000" />
+      <workItem from="1572900217636" duration="4969000" />
     </task>
     <servers />
   </component>
@@ -106,7 +110,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
