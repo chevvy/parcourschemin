@@ -14,25 +14,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a65ae4de-5eb5-4fda-9dc8-c38c539d2f9d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../AutresIntnéraires.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RTC-23juil-29nov/Horaire_Boucle_Partage.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RTC-23juil-29nov/__licence.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RTC-23juil-29nov/__lisez-moi.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RTC-23juil-29nov/agency.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RTC-23juil-29nov/calendar_dates.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RTC-23juil-29nov/feed_info.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RTC-23juil-29nov/routes.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RTC-23juil-29nov/shapes.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RTC-23juil-29nov/stop_times.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RTC-23juil-29nov/stops.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RTC-23juil-29nov/transfers.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RTC-23juil-29nov/trips.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libGRAPHE.a" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libTP2.a" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../out.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aRemettrePourTP2.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/aRemettrePourTP2.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libTP2.a" beforeDir="false" afterPath="$PROJECT_DIR$/libTP2.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main" beforeDir="false" afterPath="$PROJECT_DIR$/main" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,6 +39,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -61,6 +48,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -107,7 +95,7 @@
       <option name="presentableId" value="Default" />
       <updated>1572810012566</updated>
       <workItem from="1572810015167" duration="33000" />
-      <workItem from="1572812820537" duration="1624000" />
+      <workItem from="1572812820537" duration="8874000" />
     </task>
     <servers />
   </component>
