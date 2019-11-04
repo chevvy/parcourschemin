@@ -14,7 +14,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a65ae4de-5eb5-4fda-9dc8-c38c539d2f9d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aRemettrePourTP2.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/aRemettrePourTP2.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libTP2.a" beforeDir="false" afterPath="$PROJECT_DIR$/libTP2.a" afterDir="false" />
@@ -95,7 +94,7 @@
       <option name="presentableId" value="Default" />
       <updated>1572810012566</updated>
       <workItem from="1572810015167" duration="33000" />
-      <workItem from="1572812820537" duration="8874000" />
+      <workItem from="1572812820537" duration="13384000" />
     </task>
     <servers />
   </component>

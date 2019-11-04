@@ -16,19 +16,38 @@ void ReseauGTFS::ajouterArcsVoyages(const DonneesGTFS & p_gtfs)
 
 	for(auto const & voyage : p_gtfs.getVoyages()) // itère dans la liste des voyages présent dans l'objet GTFS
     {
-	    for(auto const & arret : voyage.second.getArrets()) // on itère sur les arrêts d'un voyage
+	    auto arretsDuVoyage = voyage.second.getArrets();
+	    vector<Arret> vecteurArrets;
+	    for( const auto & arretIter : arretsDuVoyage)
+	    {
+            vecteurArrets.push_back(*arretIter);
+	    }
+	    for( auto arretIter=vecteurArrets.begin(), prevArret = vecteurArrets.end();
+	        arretIter != vecteurArrets.end(); prevArret= arretIter, ++arretIter )
         {
+	        if(m_leGraphe.getNbArcs() == 0)
+	        {
+	            int poids = 0 ; // étant donné que c'est le premier arret, le poids est de 0
+	            m_leGraphe.ajouterArc(arretIter->getNumeroSequence(), arretIter->getNumeroSequence(), poids);
+	        }
+	        else {
+	            int poids = arretIter->getHeureArrivee() - prevArret->getHeureArrivee();
+	            m_leGraphe.ajouterArc(prevArret->getNumeroSequence(), arretIter->getNumeroSequence(), poids);
+	        }
+
+        }
+
             // on stock le premier arrêt dans une variable -> arret1
-            // ensuite, on vérifie s'il y a un arret avant celui-ci (iterator.prev())
+
+
+
+            // ensuite, on vérifie s'il y a un itrArret avant celui-ci (iterator.prev())
                 // si pas d'item avant, on skip (ça veut dire que c'est le premier arrêt
             // sinon, on fait la différence de temps entre arret2-arret1 = poids
             // on créer l'arc(size_t arret1, size_t arret2, poids)
             // On ajoute l'arc à this->m_leGraphe.ajouterArc()
             // on ajoute au vecteur m_arretDuSommet[size_t arret1] = sharedPrt arret1
             // on ajoute à la map m_sommetDeArret -> clé = arretPTR et valeur = size_t arret1
-
-
-        }
 
     }
 
