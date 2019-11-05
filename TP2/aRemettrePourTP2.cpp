@@ -13,47 +13,55 @@ using namespace std;
 void ReseauGTFS::ajouterArcsVoyages(const DonneesGTFS & p_gtfs)
 {
 	//écrire votre code ici
-
+    int numeroArret = 0;
 	for(auto const & voyage : p_gtfs.getVoyages()) // itère dans la liste des voyages présent dans l'objet GTFS
     {
 	    auto arretsDuVoyage = voyage.second.getArrets();
+	    // TODO est-ce qu'il y a un moyen d'accéder au ptr arret via le set ? oui p-e via arretItr.get(); qui retourne ptr
+
+	    // on vient créer un vecteur pour crisser les ptr dedans pour rendre la manip plus facile
+
 	    vector<Arret> vecteurArrets;
-	    int numeroArret = 0;
 	    for( const auto & arretIter : arretsDuVoyage)
 	    {
-            vecteurArrets.push_back(*arretIter);
+	        vecteurArrets.push_back(*arretIter);
 	    }
+
         // on stock le premier arrêt dans un premier iterateur, et l'arret précédent dans un deuxième
         // on pourrait aussi le faire avec un stack/queue?
-	    for( auto arretIter=vecteurArrets.begin(), prevArret = vecteurArrets.end();
+        for( auto arretIter=vecteurArrets.begin(), prevArret = vecteurArrets.end();
 	        arretIter != vecteurArrets.end(); prevArret= arretIter, ++arretIter )
         {
-            // ensuite, on vérifie s'il y a déjè un arc dans le graphe. si pas d'item, on skip (ça veut dire que c'est le premier arrêt
-	        if(m_leGraphe.getNbArcs() == 0)
+	        Arret::Ptr ptrArret = make_shared<Arret>(arretIter->getStationId(), arretIter->getHeureArrivee(), arretIter->getHeureDepart(), arretIter->getNumeroSequence(), arretIter->getVoyageId());
+	        // ensuite, on vérifie s'il y a déjè un arc dans le graphe. si pas d'item, on skip (ça veut dire que c'est le premier arrêt
+	        if(arretIter == vecteurArrets.begin() || prevArret == vecteurArrets.end()) //si on est au début de la liste de vecteur
 	        {
 	            int poids = 0 ; // étant donné que c'est le premier arret, le poids est de 0
 	            m_leGraphe.ajouterArc(numeroArret, numeroArret, poids);
-                // on ajoute au vecteur m_arretDuSommet[size_t arret1] = sharedPrt arret1
-                // on ajoute à la map m_sommetDeArret -> clé = arretPTR et valeur = size_t arret1
-                Arret::Ptr ptrArret = make_shared<Arret>(arretIter);
-                m_arretDuSommet.push_back(ptrArret);
-                m_sommetDeArret[ptrArret] = numeroArret;
+
+                if (m_sommetDeArret.find(ptrArret) != m_sommetDeArret.end()) // on vérifie que l'arret n,est pas déjà ajouter
+                {
+                    m_arretDuSommet.push_back(ptrArret);// on ajoute au vecteur m_arretDuSommet[size_t arret1] = sharedPrt arret1
+                    m_sommetDeArret[ptrArret] = numeroArret; // on ajoute à la map m_sommetDeArret -> clé = arretPTR et valeur = size_t arret1
+                }
+
 	        }
                 // on ajoute au vecteur m_arretDuSommet[size_t arret1] = sharedPrt arret1
                 // on ajoute à la map m_sommetDeArret -> clé = arretPTR et valeur = size_t arret1
-	        else {
+	        else
+            {
                 // sinon, on fait la différence de temps entre arret2-arret1 = poids
 	            int poids = arretIter->getHeureArrivee() - prevArret->getHeureArrivee();
                 // on créer/ajoute l'arc(size_t arret1, size_t arret2, poids)
 	            m_leGraphe.ajouterArc(numeroArret,numeroArret+1 , poids);
 
-	            Arret::Ptr ptrArret = make_shared<Arret>(arretIter);
-                m_arretDuSommet.push_back(ptrArret);
-                m_sommetDeArret[ptrArret] = numeroArret;
+	            if (m_sommetDeArret.find(ptrArret) != m_sommetDeArret.end()) // on vérifie que l'arret n,est pas déjà ajouter
+                {
+                    m_arretDuSommet.push_back(ptrArret);
+                    m_sommetDeArret[ptrArret] = numeroArret;
+                }
 	            numeroArret++;
 	        }
-
-
         }
 
 

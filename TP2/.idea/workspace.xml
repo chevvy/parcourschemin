@@ -16,6 +16,9 @@
     <list default="true" id="a65ae4de-5eb5-4fda-9dc8-c38c539d2f9d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aRemettrePourTP2.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/aRemettrePourTP2.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libGRAPHE.a" beforeDir="false" afterPath="$PROJECT_DIR$/libGRAPHE.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libTP2.a" beforeDir="false" afterPath="$PROJECT_DIR$/libTP2.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main" beforeDir="false" afterPath="$PROJECT_DIR$/main" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -98,7 +101,7 @@
       <workItem from="1572898397873" duration="115000" />
       <workItem from="1572898661653" duration="31000" />
       <workItem from="1572899552798" duration="630000" />
-      <workItem from="1572900217636" duration="4969000" />
+      <workItem from="1572900217636" duration="9214000" />
     </task>
     <servers />
   </component>
