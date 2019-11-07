@@ -36,14 +36,15 @@ void ReseauGTFS::ajouterArcsVoyages(const DonneesGTFS & p_gtfs)
 	        // ensuite, on vérifie s'il y a déjè un arc dans le graphe. si pas d'item, on skip (ça veut dire que c'est le premier arrêt
 	        if(arretIter == vecteurArrets.begin() || prevArret == vecteurArrets.end()) //si on est au début de la liste de vecteur
 	        {
-	            int poids = 0 ; // étant donné que c'est le premier arret, le poids est de 0
-	            m_leGraphe.ajouterArc(numeroArret, numeroArret, poids);
-
-                if (m_sommetDeArret.find(ptrArret) != m_sommetDeArret.end()) // on vérifie que l'arret n,est pas déjà ajouter
-                {
-                    m_arretDuSommet.push_back(ptrArret);// on ajoute au vecteur m_arretDuSommet[size_t arret1] = sharedPrt arret1
-                    m_sommetDeArret[ptrArret] = numeroArret; // on ajoute à la map m_sommetDeArret -> clé = arretPTR et valeur = size_t arret1
-                }
+//	           // TODO Purifie moi ça svp
+//	            int poids = 0 ; // étant donné que c'est le premier arret, le poids est de 0
+//	            m_leGraphe.ajouterArc(numeroArret, numeroArret, poids);
+//
+//                if (m_sommetDeArret.find(ptrArret) != m_sommetDeArret.end()) // on vérifie que l'arret n,est pas déjà ajouter
+//                {
+//                    m_arretDuSommet.push_back(ptrArret);// on ajoute au vecteur m_arretDuSommet[size_t arret1] = sharedPrt arret1
+//                    m_sommetDeArret[ptrArret] = numeroArret; // on ajoute à la map m_sommetDeArret -> clé = arretPTR et valeur = size_t arret1
+//                }
 
 	        }
                 // on ajoute au vecteur m_arretDuSommet[size_t arret1] = sharedPrt arret1
@@ -77,6 +78,8 @@ void ReseauGTFS::ajouterArcsVoyages(const DonneesGTFS & p_gtfs)
 void ReseauGTFS::ajouterArcsTransferts(const DonneesGTFS & p_gtfs)
 {
 	//écrire votre code ici
+
+
 }
 
 //! \brief ajouts des arcs d'une station à elle-même pour les stations qui ne sont pas dans DonneesGTFS::m_stationsDeTransfert
