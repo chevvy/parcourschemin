@@ -77,9 +77,42 @@ void ReseauGTFS::ajouterArcsVoyages(const DonneesGTFS & p_gtfs)
 //! \throws logic_error si une incohérence est détecté lors de cette étape de construction du graphe
 void ReseauGTFS::ajouterArcsTransferts(const DonneesGTFS & p_gtfs)
 {
-	//écrire votre code ici
+    std::multimap<int, Arret::Ptr> arretsPourSelection; // contient les arrêts qui seront utilisés pour le tx
+    // On commence par itérer sur la liste de transferts
+	for(auto const & transfert : p_gtfs.getTransferts())
+    {
+	    //  <from_station_id, to_station_id, min_transfer_time>
+	    int fromStationId = get<0>(transfert);
+	    int toStationId = get<1>(transfert);
+	    int minTransferTime = get<2>(transfert);
+        // ensuite, on trouve les arrêts du "fromStationID"
+        for (const auto & arretFrom : p_gtfs.getStations().at(fromStationId).getArrets())
+        {
+            // ensuite on trouve les arrêts du "toStationID"
+            for (const auto & arretTo : p_gtfs.getStations().at(toStationId).getArrets())
+            {
+                string const & voyageFromID = arretFrom.second->getVoyageId();
+                string const & voyageToID = arretTo.second->getVoyageId();
+                string ligneFrom = p_gtfs.getVoyages().at(voyageFromID).getId();
+                string ligneTo = p_gtfs.getVoyages().at(voyageToID).getId();
+                // on vérifie que le transfert ne se fait pas sur la même ligne
+                if (ligneFrom != ligneTo)
+                {
+                    // l’heure d’arrivée de l’arrêt B moins l’heure d’arrivée de l’arrêt A est supérieure ou égale à min_transfer_time. I
+                    int differenceTemps =  arretTo.second->getHeureArrivee() - arretFrom.second->getHeureArrivee();
+                    if(differenceTemps >= minTransferTime)
+                    {
+                        // on ajoute à la map de différence de temps
+                        arretsPourSelection.insert(make_pair(differenceTemps, arretTo.second));
+                    }
+                }
+            }
+            int i = m_sommetDeArret[arretFrom.second];
+            int j = m_sommetDeArret[arretsPourSelection.lower_bound(minTransferTime)->second];
+            m_leGraphe.ajouterArc(i,j, arretsPourSelection.lower_bound(minTransferTime)->first);
 
-
+        }
+    }
 }
 
 //! \brief ajouts des arcs d'une station à elle-même pour les stations qui ne sont pas dans DonneesGTFS::m_stationsDeTransfert
