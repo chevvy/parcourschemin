@@ -12,53 +12,48 @@ using namespace std;
 //! \throws logic_error si une incohérence est détecté lors de cette étape de construction du graphe
 void ReseauGTFS::ajouterArcsVoyages(const DonneesGTFS & p_gtfs)
 {
-	//écrire votre code ici
-    int numeroArret = 0;
-	for(auto const & voyage : p_gtfs.getVoyages()) // itère dans la liste des voyages présent dans l'objet GTFS
+    // TODO checker si ça serait mieux de pas passer par le conteneur mais direct avec p_gtfs.getVoyages()
+    // TODO ajotuer les throws pour les incohérence lors de l'ajout
+    const map<std::string, Voyage>& mapVoyages = p_gtfs.getVoyages();
+    size_t sommetSelectionneJ = m_arretDuSommet.size(); // correspond au sommet J lors de l'ajout
+
+    for (const auto & mapVoyage : mapVoyages) // on commence par iterer sur la liste des voyages
     {
-	    auto arretsDuVoyage = voyage.second.getArrets();
-	    // TODO est-ce qu'il y a un moyen d'accéder au ptr arret via le set ? oui p-e via arretItr.get(); qui retourne ptr
+        auto conteneurArretsDuVoyage = mapVoyage.second.getArrets();
+        auto itrVoyageActuel = conteneurArretsDuVoyage.begin();
+        auto itrVoyagePrecedent = itrVoyageActuel.operator*(); // sera utilisé comme notre arrêt au sommet i
+        // On insère les premiers arrets de chaque Voyage provenant de notre mapVoyage
+        m_sommetDeArret.insert({itrVoyageActuel.operator*(), sommetSelectionneJ});
+        m_arretDuSommet.push_back(itrVoyageActuel.operator*());
+        ++sommetSelectionneJ;
+        ++itrVoyageActuel;
 
-	    // on vient créer un vecteur pour crisser les ptr dedans pour rendre la manip plus facile
-
-	    vector<shared_ptr<Arret>> vecteurArrets;
-	    for( const auto & arretIter : arretsDuVoyage)
-	    {
-	        vecteurArrets.push_back(arretIter);
-	    }
-
-        // on stock le premier arrêt dans un premier iterateur, et l'arret précédent dans un deuxième
-        // on pourrait aussi le faire avec un stack/queue?
-        for( auto arretIter=vecteurArrets.begin(), prevArret = vecteurArrets.end();
-	        arretIter != vecteurArrets.end(); prevArret= arretIter, ++arretIter )
+        // une fois le premier arc du voyage ajouté, on va passer sur l'ensemble des arrets du voyage
+        // et ajouter les arcs et les sommets correspondants
+        while (itrVoyageActuel != conteneurArretsDuVoyage.end())
         {
-	        // ensuite, on vérifie s'il y a déjè un arc dans le graphe. si pas d'item, on skip (ça veut dire que c'est le premier arrêt
-	        if(arretIter == vecteurArrets.begin() || prevArret == vecteurArrets.end()) //si on est au début de la liste de vecteur
-	        {
-//	           // TODO Purifie moi ça svp
-	        }
-                // on ajoute au vecteur m_arretDuSommet[size_t arret1] = sharedPrt arret1
-                // on ajoute à la map m_sommetDeArret -> clé = arretPTR et valeur = size_t arret1
-	        else
-            {
-                // sinon, on fait la différence de temps entre arret2-arret1 = poids
-	            int poids = arretIter->get()->getHeureArrivee() - prevArret->get()->getHeureArrivee();
-                // on créer/ajoute l'arc(size_t arret1, size_t arret2, poids)
-                if (m_sommetDeArret.find(arretIter.operator*()) != m_sommetDeArret.end()) // on vérifie que l'arret n,est pas déjà ajouter
-                {
-                    m_sommetDeArret[arretIter.operator*()] = numeroArret;
-                    m_arretDuSommet.push_back(arretIter.operator*());
-                }
-                m_leGraphe.ajouterArc(numeroArret,numeroArret+1 , poids);
-                cout << "ajout arc " << numeroArret << numeroArret+1 << endl;
-                numeroArret++;
-	        }
+            // voyage actuel = i
+            auto arretVoyagePrecedent = itrVoyagePrecedent.operator*(); // TODO checker pourquoi le * avant ne fonctionne pas et que y'a juste operator* qui fnct
+            auto heureArriveVoyagePrecedent = itrVoyagePrecedent->getHeureArrivee();
+            // voyage actuel = j
+            auto arretVoyageActuel = itrVoyageActuel.operator*();
+            auto heureArriveeVoyageActuel = itrVoyageActuel.operator*()->getHeureArrivee();
+
+            auto poids = (heureArriveeVoyageActuel - heureArriveVoyagePrecedent);
+
+            // ajout dans les conteneurs permettant la recup des arrets pour les autres fonctions
+            m_sommetDeArret.insert({arretVoyageActuel, sommetSelectionneJ});
+            m_arretDuSommet.push_back(arretVoyageActuel); // sera inséré à la même position que notre sommet courant
+
+            size_t i = sommetSelectionneJ-1;
+            size_t j = sommetSelectionneJ;
+            m_leGraphe.ajouterArc(i,j, poids);
+
+            itrVoyagePrecedent = arretVoyageActuel;
+            ++sommetSelectionneJ;
+            ++itrVoyageActuel;
         }
-
-
-
     }
-
 
 }
 
@@ -100,8 +95,6 @@ void ReseauGTFS::ajouterArcsTransferts(const DonneesGTFS & p_gtfs)
             int i = m_sommetDeArret[arretFrom.second];
             int j = m_sommetDeArret[arretsPourSelection.lower_bound(minTransferTime)->second];
             m_leGraphe.ajouterArc(i,j, arretsPourSelection.lower_bound(minTransferTime)->first);
-            cout <<"ajout de l'arc " <<i << j << arretFrom.second <<endl;
-
         }
     }
 }
