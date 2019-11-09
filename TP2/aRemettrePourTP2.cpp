@@ -21,10 +21,10 @@ void ReseauGTFS::ajouterArcsVoyages(const DonneesGTFS & p_gtfs)
 
 	    // on vient créer un vecteur pour crisser les ptr dedans pour rendre la manip plus facile
 
-	    vector<Arret> vecteurArrets;
+	    vector<shared_ptr<Arret>> vecteurArrets;
 	    for( const auto & arretIter : arretsDuVoyage)
 	    {
-	        vecteurArrets.push_back(*arretIter);
+	        vecteurArrets.push_back(arretIter);
 	    }
 
         // on stock le premier arrêt dans un premier iterateur, et l'arret précédent dans un deuxième
@@ -32,36 +32,26 @@ void ReseauGTFS::ajouterArcsVoyages(const DonneesGTFS & p_gtfs)
         for( auto arretIter=vecteurArrets.begin(), prevArret = vecteurArrets.end();
 	        arretIter != vecteurArrets.end(); prevArret= arretIter, ++arretIter )
         {
-	        Arret::Ptr ptrArret = make_shared<Arret>(arretIter->getStationId(), arretIter->getHeureArrivee(), arretIter->getHeureDepart(), arretIter->getNumeroSequence(), arretIter->getVoyageId());
 	        // ensuite, on vérifie s'il y a déjè un arc dans le graphe. si pas d'item, on skip (ça veut dire que c'est le premier arrêt
 	        if(arretIter == vecteurArrets.begin() || prevArret == vecteurArrets.end()) //si on est au début de la liste de vecteur
 	        {
 //	           // TODO Purifie moi ça svp
-//	            int poids = 0 ; // étant donné que c'est le premier arret, le poids est de 0
-//	            m_leGraphe.ajouterArc(numeroArret, numeroArret, poids);
-//
-//                if (m_sommetDeArret.find(ptrArret) != m_sommetDeArret.end()) // on vérifie que l'arret n,est pas déjà ajouter
-//                {
-//                    m_arretDuSommet.push_back(ptrArret);// on ajoute au vecteur m_arretDuSommet[size_t arret1] = sharedPrt arret1
-//                    m_sommetDeArret[ptrArret] = numeroArret; // on ajoute à la map m_sommetDeArret -> clé = arretPTR et valeur = size_t arret1
-//                }
-
 	        }
                 // on ajoute au vecteur m_arretDuSommet[size_t arret1] = sharedPrt arret1
                 // on ajoute à la map m_sommetDeArret -> clé = arretPTR et valeur = size_t arret1
 	        else
             {
                 // sinon, on fait la différence de temps entre arret2-arret1 = poids
-	            int poids = arretIter->getHeureArrivee() - prevArret->getHeureArrivee();
+	            int poids = arretIter->get()->getHeureArrivee() - prevArret->get()->getHeureArrivee();
                 // on créer/ajoute l'arc(size_t arret1, size_t arret2, poids)
-	            m_leGraphe.ajouterArc(numeroArret,numeroArret+1 , poids);
-
-	            if (m_sommetDeArret.find(ptrArret) != m_sommetDeArret.end()) // on vérifie que l'arret n,est pas déjà ajouter
+                if (m_sommetDeArret.find(arretIter.operator*()) != m_sommetDeArret.end()) // on vérifie que l'arret n,est pas déjà ajouter
                 {
-                    m_arretDuSommet.push_back(ptrArret);
-                    m_sommetDeArret[ptrArret] = numeroArret;
+                    m_sommetDeArret[arretIter.operator*()] = numeroArret;
+                    m_arretDuSommet.push_back(arretIter.operator*());
                 }
-	            numeroArret++;
+                m_leGraphe.ajouterArc(numeroArret,numeroArret+1 , poids);
+                cout << "ajout arc " << numeroArret << numeroArret+1 << endl;
+                numeroArret++;
 	        }
         }
 
@@ -77,7 +67,7 @@ void ReseauGTFS::ajouterArcsVoyages(const DonneesGTFS & p_gtfs)
 //! \throws logic_error si une incohérence est détecté lors de cette étape de construction du graphe
 void ReseauGTFS::ajouterArcsTransferts(const DonneesGTFS & p_gtfs)
 {
-    std::multimap<int, Arret::Ptr> arretsPourSelection; // contient les arrêts qui seront utilisés pour le tx
+    std::multimap<int, shared_ptr<Arret>> arretsPourSelection; // contient les arrêts qui seront utilisés pour le tx
     // On commence par itérer sur la liste de transferts
 	for(auto const & transfert : p_gtfs.getTransferts())
     {
@@ -110,6 +100,7 @@ void ReseauGTFS::ajouterArcsTransferts(const DonneesGTFS & p_gtfs)
             int i = m_sommetDeArret[arretFrom.second];
             int j = m_sommetDeArret[arretsPourSelection.lower_bound(minTransferTime)->second];
             m_leGraphe.ajouterArc(i,j, arretsPourSelection.lower_bound(minTransferTime)->first);
+            cout <<"ajout de l'arc " <<i << j << arretFrom.second <<endl;
 
         }
     }
@@ -119,22 +110,11 @@ void ReseauGTFS::ajouterArcsTransferts(const DonneesGTFS & p_gtfs)
 //! \throws logic_error si une incohérence est détecté lors de cette étape de construction du graphe
 void ReseauGTFS::ajouterArcsAttente(const DonneesGTFS & p_gtfs)
 {
-	//écrire votre code ici
-	// pour toute station possédant un station_id non présent dans un champ from_station_id de m_transferts
-	    // et qui est desservie par plus d’une ligne,
-    // la méthode ajouterArcsAttente :
-    //- ajoutera un arc dans m_leGraphe entre l’arrêt A et l’arrêt B de cette station si et seulement si les conditions suivantes sont satisfaites :
-        //• l’heure d’arrivée de l’arrêt B moins l’heure d’arrivée de l’arrêt A est supérieure ou égale à delaisMinArcsAttente (qui est un membre constant de ReseauGTFS fixé à 300 secondes).
-        //• Le numéro de ligne du voyage de l’arrêt A est différent de celui de l’arrêt B.
-        //• Il n’existe pas un autre arrêt C à cette station dont :
-            //o le numéro de ligne est le même que celui de B
-            //o et dont l’heure d’arrivée est plus petit que celui de B
-            //o et est plus grand ou égale à celui de A + delaisMinArcsAttente.
-
     for (auto const & station : p_gtfs.getStations())
     {
         if (p_gtfs.getStationsDeTransfert().find(station.second.getId()) == p_gtfs.getStationsDeTransfert().end())
         {
+            // on met les arrêts dans un vecteur pour faciliter la prochaine manipulation
             vector<shared_ptr<Arret>> vecteurArrets;
             for( const auto & arretIter : station.second.getArrets())
             {
@@ -144,14 +124,12 @@ void ReseauGTFS::ajouterArcsAttente(const DonneesGTFS & p_gtfs)
             for( auto arretIter=vecteurArrets.begin(), prevArret = vecteurArrets.end();
                  arretIter != vecteurArrets.end(); prevArret= arretIter, ++arretIter )
             {
-                // Arret::Ptr ptrArret = make_shared<Arret>(arretIter->getStationId(), arretIter->getHeureArrivee(), arretIter->getHeureDepart(), arretIter->getNumeroSequence(), arretIter->getVoyageId());
-                // ensuite, on vérifie s'il y a déjè un arc dans le graphe. si pas d'item, on skip (ça veut dire que c'est le premier arrêt
+                // TODO à corriger ça (changer pour que ça soit juste un if plutôt que IF else)
                 if(arretIter == vecteurArrets.begin() || prevArret == vecteurArrets.end()) //si on est au début de la liste de vecteur
                 {
                     // on est au debut de la liste
                 }
-                    // on ajoute au vecteur m_arretDuSommet[size_t arret1] = sharedPrt arret1
-                    // on ajoute à la map m_sommetDeArret -> clé = arretPTR et valeur = size_t arret1
+
                 else
                 {
                     int poids = arretIter->get()->getHeureArrivee() - prevArret->get()->getHeureArrivee(); // prevArret = A arretiter = B
@@ -160,63 +138,53 @@ void ReseauGTFS::ajouterArcsAttente(const DonneesGTFS & p_gtfs)
                     if ( poids >= delaisMinArcsAttente)
                     {
                         // on va chercher le ID du voyage associé à l'arrêt A (prev)
-                        string const & voyageIdA = prevArret->getVoyageId();
+                        string const & voyageIdA = prevArret->get()->getVoyageId();
                         // on va chercher le int de la ligne associé au voyage
                         unsigned int numDeLigneA = p_gtfs.getVoyages().at(voyageIdA).getLigne();
                         // finalement, on vient chercher le string de la ligne
                         string nomDeligneA = p_gtfs.getLignes().find(numDeLigneA)->second.getNumero();
 
                         // on va chercher le ID du voyage associé à l'arrêt B (arretIter)
-                        string const & voyageIdB = arretIter->getVoyageId();
+                        string const & voyageIdB = arretIter->get()->getVoyageId();
                         unsigned int numDeLigneB = p_gtfs.getVoyages().at(voyageIdB).getLigne();
                         string nomDeligneB = p_gtfs.getLignes().find(numDeLigneB)->second.getNumero();
 
                         //• Le numéro de ligne du voyage de l’arrêt A est différent de celui de l’arrêt B.
                         if(nomDeligneA != nomDeligneB)
                         {
+                            // on vient vérifier les conditions pour tout vecteur C (CAD -> ¬A ¬B)
 
+                            bool arretsRespecteConditions = true;
                             for( auto arretIterCC=vecteurArrets.begin() ; arretIterCC != vecteurArrets.end(); ++arretIterCC )
                             {
-                                unsigned int numDeLigneC = p_gtfs.getVoyages().at(arretIterCC->getVoyageId()).getLigne();
-                                string nomDeligneC = p_gtfs.getLignes().find(numDeLigneC)->second.getNumero();
-                                bool arretsRespecteConditions = true;
-
-                                // while arretRespecteCondition and arretCiterator != end() -> verifie trois conditions
-                                while (arretsRespecteConditions && (arretIterCC != vecteurArrets.end()))
+                                // vérifie que l'arrêt c n'est pas l'arret A ou B
+                                if (arretIterCC != arretIter || arretIterCC != prevArret)
                                 {
+                                    unsigned int numDeLigneC = p_gtfs.getVoyages().at(arretIterCC->get()->getVoyageId()).getLigne();
+                                    string nomDeligneC = p_gtfs.getLignes().find(numDeLigneC)->second.getNumero();
                                     //• Il n’existe pas un autre arrêt C à cette station dont :
                                     //o le numéro de ligne est le même que celui de B
-                                    bool numdeLigneCetBidentique = numDeLigneB == numDeLigneC;
+                                    bool numdeLigneCetBidentique = (numDeLigneB == numDeLigneC);
                                     //o et dont l’heure d’arrivée est plus petit que celui de B
-                                    bool heureArriveCplusPetitQueB = arretIterCC->getHeureArrivee() < arretIter->getHeureArrivee();
+                                    bool heureArriveCplusPetitQueB = arretIterCC->get()->getHeureArrivee() < arretIter->get()->getHeureArrivee();
                                     //o et est plus grand ou égale à celui de A + delaisMinArcsAttente.
-                                    Heure heureArriveAplusDelais(prevArret->getHeureArrivee());
+                                    Heure heureArriveAplusDelais(prevArret->get()->getHeureArrivee());
                                     heureArriveAplusDelais.add_secondes(delaisMinArcsAttente*60);
-                                    bool heureArriveCplusGrandQueAetDelais = arretIterCC->getHeureArrivee() >= (heureArriveAplusDelais);
+                                    bool heureArriveCplusGrandQueAetDelais = arretIterCC->get()->getHeureArrivee() >= (heureArriveAplusDelais);
 
                                     if (numdeLigneCetBidentique && heureArriveCplusPetitQueB && heureArriveCplusGrandQueAetDelais)
                                     {
                                         arretsRespecteConditions = false;
                                     }
                                 }
-                                if (arretsRespecteConditions && arretIterCC==vecteurArrets.end())
+                                if (arretsRespecteConditions)
                                 {
-
                                     // on créer/ajoute l'arc(size_t arret1, size_t arret2, poids)
-                                    // TODO -> tu es rendu à fix le fait que ton vecteur était juste avec des arret, pas des pointer
-                                    // TODO -> faire attention de pas copier coller trop vite car tu vas toute chier ton programme (prevArret versus arretIter)
-                                    Arret::Ptr ptrArretA = make_shared<Arret>(prevArret->getStationId(), prevArret->getHeureArrivee(), prevArret->getHeureDepart(), prevArret->getNumeroSequence(), prevArret->getVoyageId());
-                                    Arret::Ptr ptrArretB = make_shared<Arret>(arretIter->getStationId(), arretIter->getHeureArrivee(), arretIter->getHeureDepart(), arretIter->getNumeroSequence(), arretIter->getVoyageId());
-
-                                    int i = m_sommetDeArret[ptrArretA];
-                                    int j = m_sommetDeArret[ptrArretB];
+                                    int i = m_sommetDeArret[* prevArret];
+                                    int j = m_sommetDeArret[* arretIter];
                                     m_leGraphe.ajouterArc(i, j, poids);
+                                    // cout << "Arc attente ajouté au i = " << m_sommetDeArret[* prevArret] << " et j = " << m_sommetDeArret[* arretIter] <<endl;
                                 }
-
-
-                                // if arretRespecteCondition && arretCiterator == end()
-                                // ajoute l'arc
-
                             }
                         }
                     }

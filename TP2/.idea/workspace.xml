@@ -101,7 +101,7 @@
       <workItem from="1572898661653" duration="31000" />
       <workItem from="1572899552798" duration="630000" />
       <workItem from="1572900217636" duration="10669000" />
-      <workItem from="1573165243223" duration="23952000" />
+      <workItem from="1573165243223" duration="30975000" />
     </task>
     <servers />
   </component>
@@ -123,5 +123,31 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/aRemettrePourTP2.cpp</url>
+          <line>99</line>
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/aRemettrePourTP2.cpp</url>
+          <line>100</line>
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/aRemettrePourTP2.cpp</url>
+          <line>101</line>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/aRemettrePourTP2.cpp</url>
+          <line>102</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
