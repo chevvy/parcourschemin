@@ -65,7 +65,7 @@ int main()
         distribution(generator);
     }
 
-    bool afficherItineraire = true;
+    bool afficherItineraire = false;
     const unsigned int nbDeTests = 10; //nombre de tests à effectuer
     long moy_tempsExecution = 0;
 
