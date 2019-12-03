@@ -1,0 +1,219 @@
+Nombre de lignes = 322
+Nombre de stations initiales = 4646
+Nombre de services = 1
+Chargement des données effectué en 11.6717 secondes
+Nombre de stations ayant au moins 1 arrêt = 3638
+Nombre de transferts = 493
+Nombres de voyages = 2406
+Nombre d'arrêts = 119400
+Le nombre d'arcs (sans le point origine et destination) est = 333674
+Graphe (sans le point source et destination) a été produit en 1.63896 secondes
+
+==========================================
+           début de la simulation         
+==========================================
+
+
+Test numéro 0
+station du point origine = 2636 - Berlioz (lat:46.8443, long:-71.3888)
+station du point destination = 4465 - R.-Bourassa/4465 (lat:46.8506, long:-71.3387)
+distance = 3.87407 kilomètres
+
+=====================
+     ITINÉRAIRE      
+=====================
+
+Heure de départ du point d'origine: 07:30:00
+Rendez vous à la station 2636 - Berlioz (lat:46.8443, long:-71.3888)
+De cette station, prenez l'autobus numéro 75 à l'heure 07:32:00 Vers Sainte-Foy Centre (Sud)
+et arrêtez-vous à la station 5016 - J.-Parent/5016 (lat:46.8508, long:-71.3389) à l'heure 07:44:00
+Déplacez-vous à pieds de cette station au point destination
+Heure d'arrivée à la destination: 07:44:21
+Durée du trajet: 0 heures, 14 minutes, 21 secondes
+Temps d'exécution de l'algorithme de plus court chemin: 161 microsecondes
+
+Test numéro 1
+station du point origine = 2003 - L'Isle-Dieu (lat:46.7723, long:-71.296)
+station du point destination = 2009 - T. de Marly (lat:46.7519, long:-71.3309)
+distance = 3.49133 kilomètres
+
+=====================
+     ITINÉRAIRE      
+=====================
+
+Heure de départ du point d'origine: 07:30:00
+Rendez vous à la station 2006 - Gare de Ste-Foy (lat:46.7736, long:-71.3009)
+De cette station, prenez l'autobus numéro 800 à l'heure 07:35:00 Vers Pointe-de-Sainte-Foy (Ouest)
+et arrêtez-vous à la station 2009 - T. de Marly (lat:46.7519, long:-71.3309) à l'heure 07:41:00
+Déplacez-vous à pieds de cette station au point destination
+Heure d'arrivée à la destination: 07:41:00
+Durée du trajet: 0 heures, 11 minutes, 0 secondes
+Temps d'exécution de l'algorithme de plus court chemin: 216 microsecondes
+
+Test numéro 2
+station du point origine = 3725 - Pellan (lat:46.765, long:-71.3857)
+station du point destination = 3547 - Latouche (lat:46.8643, long:-71.175)
+distance = 19.4721 kilomètres
+
+=====================
+     ITINÉRAIRE      
+=====================
+
+Heure de départ du point d'origine: 07:30:00
+Rendez vous à la station 6419 - J.-Gauvin/6419 (lat:46.7636, long:-71.3691)
+De cette station, prenez l'autobus numéro 94 à l'heure 08:03:00 Vers Cégep Garneau / Place Jacques-Cartier (Est)
+et arrêtez-vous à la station 1826 - Place de la Cité (lat:46.7711, long:-71.2805) à l'heure 08:14:00
+De cette station, prenez l'autobus numéro 800 à l'heure 08:20:00 Vers Beauport (Est)
+et arrêtez-vous à la station 2533 - Vallée (lat:46.8662, long:-71.1832) à l'heure 09:02:00
+Déplacez-vous à pieds de cette station au point destination
+Heure d'arrivée à la destination: 09:09:54
+Durée du trajet: 1 heures, 39 minutes, 54 secondes
+Temps d'exécution de l'algorithme de plus court chemin: 4082 microsecondes
+
+Test numéro 3
+station du point origine = 3263 - des Pâquerettes (lat:46.8875, long:-71.2783)
+station du point destination = 4050 - St-Séb./4050 (lat:46.7511, long:-71.3695)
+distance = 16.6821 kilomètres
+
+=====================
+     ITINÉRAIRE      
+=====================
+
+Heure de départ du point d'origine: 07:30:00
+Rendez vous à la station 2851 - des Pruches (lat:46.8761, long:-71.2826)
+De cette station, prenez l'autobus numéro 801 à l'heure 07:51:00 Vers Pointe-de-Sainte-Foy (Ouest)
+et arrêtez-vous à la station 2009 - T. de Marly (lat:46.7519, long:-71.3309) à l'heure 08:52:00
+De cette station, rendez-vous à pieds à la station 2110 - T. de Marly (lat:46.7518, long:-71.3307)
+De cette station, prenez l'autobus numéro 15 à l'heure 09:00:00 Vers Cap-Rouge (Ouest)
+et arrêtez-vous à la station 4050 - St-Séb./4050 (lat:46.7511, long:-71.3695) à l'heure 09:17:00
+Déplacez-vous à pieds de cette station au point destination
+Heure d'arrivée à la destination: 09:17:00
+Durée du trajet: 1 heures, 47 minutes, 0 secondes
+Temps d'exécution de l'algorithme de plus court chemin: 23419 microsecondes
+
+Test numéro 4
+station du point origine = 3050 - Ch.-Bigot/3050 (lat:46.8878, long:-71.269)
+station du point destination = 2989 - 1re Avenue/2989 (lat:46.8315, long:-71.2395)
+distance = 6.65841 kilomètres
+
+=====================
+     ITINÉRAIRE      
+=====================
+
+Heure de départ du point d'origine: 07:30:00
+Rendez vous à la station 3061 - De Tracy/3061 (lat:46.8843, long:-71.2509)
+De cette station, prenez l'autobus numéro 36 à l'heure 08:13:00 Vers Place Jacques-Cartier (Sud)
+et arrêtez-vous à la station 1494 - 4e Avenue (lat:46.8328, long:-71.232) à l'heure 08:42:00
+Déplacez-vous à pieds de cette station au point destination
+Heure d'arrivée à la destination: 08:49:00
+Durée du trajet: 1 heures, 19 minutes, 0 secondes
+Temps d'exécution de l'algorithme de plus court chemin: 206 microsecondes
+
+Test numéro 5
+station du point origine = 4524 - l'Aéroport/4524 (lat:46.8125, long:-71.3888)
+station du point destination = 3636 - Guimont (lat:46.853, long:-71.2115)
+distance = 14.2193 kilomètres
+
+=====================
+     ITINÉRAIRE      
+=====================
+
+Heure de départ du point d'origine: 07:30:00
+Rendez vous à la station 4583 - Paquet (lat:46.8105, long:-71.3698)
+De cette station, prenez l'autobus numéro 80 à l'heure 08:04:00 Vers Place Jacques-Cartier (Sud)
+et arrêtez-vous à la station 5729 - T. Les Saules (lat:46.8126, long:-71.3237) à l'heure 08:22:00
+De cette station, rendez-vous à pieds à la station 5726 - T. Les Saules (lat:46.8127, long:-71.3236)
+De cette station, prenez l'autobus numéro 803 à l'heure 08:26:00 Vers Terminus Beauport (Est)
+et arrêtez-vous à la station 3632 - Évangéline (lat:46.8511, long:-71.2234) à l'heure 08:56:00
+Déplacez-vous à pieds de cette station au point destination
+Heure d'arrivée à la destination: 09:07:12
+Durée du trajet: 1 heures, 37 minutes, 12 secondes
+Temps d'exécution de l'algorithme de plus court chemin: 3346 microsecondes
+
+Test numéro 6
+station du point origine = 3646 - Bourg-Royal/3646 (lat:46.8551, long:-71.2158)
+station du point destination = 4253 - La Morille (lat:46.848, long:-71.2968)
+distance = 6.21333 kilomètres
+
+=====================
+     ITINÉRAIRE      
+=====================
+
+Heure de départ du point d'origine: 07:30:00
+Rendez vous à la station 3572 - Évangéline (lat:46.8511, long:-71.2231)
+De cette station, prenez l'autobus numéro 52 à l'heure 07:39:00 Vers Terminus Charlesbourg (Ouest)
+et arrêtez-vous à la station 5700 - T. Charlesbourg (lat:46.8617, long:-71.2681) à l'heure 07:51:00
+De cette station, rendez-vous à pieds à la station 3943 - T. Charlesbourg (lat:46.862, long:-71.2675)
+De cette station, rendez-vous à pieds à la station 5522 - T. Charlesbourg (lat:46.8619, long:-71.2677)
+De cette station, prenez l'autobus numéro 72 à l'heure 08:04:00 Vers Loretteville (Ouest)
+et arrêtez-vous à la station 4253 - La Morille (lat:46.848, long:-71.2968) à l'heure 08:08:00
+Déplacez-vous à pieds de cette station au point destination
+Heure d'arrivée à la destination: 08:08:00
+Durée du trajet: 0 heures, 38 minutes, 0 secondes
+Temps d'exécution de l'algorithme de plus court chemin: 768 microsecondes
+
+Test numéro 7
+station du point origine = 6111 - B.-Grondin (lat:46.784, long:-71.3483)
+station du point destination = 2847 - des Roses (lat:46.8811, long:-71.2874)
+distance = 11.7551 kilomètres
+
+=====================
+     ITINÉRAIRE      
+=====================
+
+Heure de départ du point d'origine: 07:30:00
+Rendez vous à la station 5540 - J.-Verne (lat:46.7851, long:-71.3495)
+De cette station, prenez l'autobus numéro 76 à l'heure 07:35:00 Vers Gare de train de Sainte-Foy (Sud)
+et arrêtez-vous à la station 3875 - J.-Dallaire (lat:46.768, long:-71.2903) à l'heure 07:46:00
+De cette station, prenez l'autobus numéro 801 à l'heure 07:53:00 Vers Charlesbourg (Est)
+et arrêtez-vous à la station 2684 - des Roses (lat:46.8807, long:-71.2867) à l'heure 08:44:00
+Déplacez-vous à pieds de cette station au point destination
+Heure d'arrivée à la destination: 08:44:49
+Durée du trajet: 1 heures, 14 minutes, 49 secondes
+Temps d'exécution de l'algorithme de plus court chemin: 8062 microsecondes
+
+Test numéro 8
+station du point origine = 1284 - De La Martinière (lat:46.826, long:-71.2434)
+station du point destination = 2132 - du Foulon/2132 (lat:46.767, long:-71.2589)
+distance = 6.67405 kilomètres
+
+=====================
+     ITINÉRAIRE      
+=====================
+
+Heure de départ du point d'origine: 07:30:00
+Rendez vous à la station 1725 - Centre de foires (lat:46.8266, long:-71.2456)
+De cette station, prenez l'autobus numéro 802 à l'heure 07:37:00 Vers Station Belvédère (Ouest)
+et arrêtez-vous à la station 1736 - Belvédère (lat:46.7968, long:-71.2404) à l'heure 07:49:00
+De cette station, prenez l'autobus numéro 802 à l'heure 07:57:00 Vers Terminus Beauport (Est)
+et arrêtez-vous à la station 1027 - R.-Lévesque (lat:46.7973, long:-71.2395) à l'heure 07:58:00
+De cette station, rendez-vous à pieds à la station 3942 - R.-Lévesque (lat:46.7968, long:-71.2391)
+De cette station, prenez l'autobus numéro 25 à l'heure 08:22:00 Vers Pointe-de-Sainte-Foy (Ouest)
+et arrêtez-vous à la station 2357 - du Parc-Beauvoir (lat:46.7701, long:-71.2627) à l'heure 08:29:00
+Déplacez-vous à pieds de cette station au point destination
+Heure d'arrivée à la destination: 08:34:27
+Durée du trajet: 1 heures, 4 minutes, 27 secondes
+Temps d'exécution de l'algorithme de plus court chemin: 13491 microsecondes
+
+Test numéro 9
+station du point origine = 4654 - de Bavière (lat:46.8621, long:-71.3423)
+station du point destination = 1207 - 9e Rue (lat:46.8249, long:-71.2328)
+distance = 9.30474 kilomètres
+
+=====================
+     ITINÉRAIRE      
+=====================
+
+Heure de départ du point d'origine: 07:30:00
+Rendez vous à la station 4328 - du Curé-Lacroix (lat:46.8558, long:-71.3356)
+De cette station, prenez l'autobus numéro 72 à l'heure 07:41:00 Vers Terminus Charlesbourg (Est)
+et arrêtez-vous à la station 5522 - T. Charlesbourg (lat:46.8619, long:-71.2677) à l'heure 07:57:00
+De cette station, rendez-vous à pieds à la station 3943 - T. Charlesbourg (lat:46.862, long:-71.2675)
+De cette station, prenez l'autobus numéro 801 à l'heure 08:11:00 Vers Pointe-de-Sainte-Foy (Ouest)
+et arrêtez-vous à la station 1249 - 9e Rue (lat:46.8245, long:-71.2327) à l'heure 08:23:00
+Déplacez-vous à pieds de cette station au point destination
+Heure d'arrivée à la destination: 08:23:29
+Durée du trajet: 0 heures, 53 minutes, 29 secondes
+Temps d'exécution de l'algorithme de plus court chemin: 1514 microsecondes
+
+La moyenne du temps d'exécution sur 10 itinéraires est de 5526.5 microsecondes

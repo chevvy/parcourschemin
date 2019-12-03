@@ -137,7 +137,7 @@ void ReseauGTFS::ajouterArcsAttente(const DonneesGTFS & p_gtfs)
                         // finalement, on vient chercher le string de la ligne
                         string nomDeligneA = p_gtfs.getLignes().find(numDeLigneA)->second.getNumero();
 
-                        // on va chercher le ID du voyage associé à l'arrêt B (arretIter)
+                        // on va chercher le ID du voyage associé à l'arrêt B (arretIter) et le reste
                         string const & voyageIdB = arretIter->get()->getVoyageId();
                         unsigned int numDeLigneB = p_gtfs.getVoyages().at(voyageIdB).getLigne();
                         string nomDeligneB = p_gtfs.getLignes().find(numDeLigneB)->second.getNumero();
@@ -151,7 +151,7 @@ void ReseauGTFS::ajouterArcsAttente(const DonneesGTFS & p_gtfs)
                             for( auto arretIterCC=vecteurArrets.begin() ; arretIterCC != vecteurArrets.end(); ++arretIterCC )
                             {
                                 // vérifie que l'arrêt c n'est pas l'arret A ou B
-                                if (arretIterCC != arretIter || arretIterCC != prevArret)
+                                if ((arretIterCC != arretIter) || (arretIterCC != prevArret))
                                 {
                                     unsigned int numDeLigneC = p_gtfs.getVoyages().at(arretIterCC->get()->getVoyageId()).getLigne();
                                     string nomDeligneC = p_gtfs.getLignes().find(numDeLigneC)->second.getNumero();
@@ -176,7 +176,7 @@ void ReseauGTFS::ajouterArcsAttente(const DonneesGTFS & p_gtfs)
                                     int i = m_sommetDeArret[* prevArret];
                                     int j = m_sommetDeArret[* arretIter];
                                     m_leGraphe.ajouterArc(i, j, poids);
-                                    // cout << "Arc attente ajouté au i = " << m_sommetDeArret[* prevArret] << " et j = " << m_sommetDeArret[* arretIter] <<endl;
+
                                 }
                             }
                         }
