@@ -128,29 +128,33 @@ unsigned int Graphe::plusCourtChemin(size_t p_origine, size_t p_destination, std
     vector<unsigned int> distance(m_listesAdj.size(), numeric_limits<unsigned int>::max());
     vector<size_t> predecesseur(m_listesAdj.size(), numeric_limits<size_t>::max());
     vector<bool> solutionne(m_listesAdj.size(), false);
+    priority_queue<pair<int, int>> pq;
 
+
+
+    // set<size_t> q; //ensemble des noeuds non solutionnés en bordure des noeuds solutionnés;
+    //q.insert(p_origine);
+    pq.push(make_pair(0, p_origine));
     distance[p_origine] = 0;
 
-    set<size_t> q; //ensemble des noeuds non solutionnés en bordure des noeuds solutionnés;
-    q.insert(p_origine);
-
     //Boucle principale: touver distance[] et predecesseur[]
-    while (!q.empty())
+    while (!pq.empty())
     {
         //trouver le noeud dans q tel que distance[noeud] est minimal
         unsigned int min = numeric_limits<unsigned int>::max();
         auto noeud_solution = numeric_limits<size_t>::max();
-        for(const auto & noeud : q)
+        list<pair<int, int>>::iterator i;
+
+        if(distance[pq.top().second] < min)
         {
-            if(distance[noeud] < min)
-            {
-                min = distance[noeud];
-                noeud_solution = noeud;
-            }
+            min = distance[pq.top().second];
+            noeud_solution = pq.top().second;
         }
+
         if (min == numeric_limits<unsigned int>::max()) break; //quitter la boucle : il est impossible de se rendre à destination
 
-        q.erase(noeud_solution); //enlever le noeud solutionné de q
+        // q.erase(noeud_solution); //enlever le noeud solutionné de q
+        pq.pop();
         solutionne[noeud_solution] = true; //indique qu'il est solutionné
 
         if (noeud_solution == p_destination) break; //car on a obtenu distance[p_destination] et predecesseur[p_destination]
@@ -158,8 +162,11 @@ unsigned int Graphe::plusCourtChemin(size_t p_origine, size_t p_destination, std
         //relâcher les arcs sortant de noeud_solution (le noeud solutionné)
         for (const auto & arc : m_listesAdj[noeud_solution])
         {
-            if (q.find(arc.destination) == q.end() && !solutionne[arc.destination])
-                q.insert(arc.destination); //insertion dans les noeuds à traiter
+           /* if (q.find(arc.destination) == q.end() && !solutionne[arc.destination])
+                q.insert(arc.destination); //insertion dans les noeuds à traiter*/
+           if(!solutionne[arc.destination]){ // TODO c'est sûr que c'est au niveau de cette fonction
+               pq.push(make_pair(arc.poids, arc.destination));
+           }
 
             unsigned int temp = distance[noeud_solution] + arc.poids;
             if (temp < distance[arc.destination])
