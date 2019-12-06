@@ -127,7 +127,8 @@ unsigned int Graphe::plusCourtChemin(size_t p_origine, size_t p_destination, std
     }
     vector<unsigned int> distance(m_listesAdj.size(), numeric_limits<unsigned int>::max());
     vector<size_t> predecesseur(m_listesAdj.size(), numeric_limits<size_t>::max());
-    vector<bool> solutionne(m_listesAdj.size(), false);
+    vector<bool> noeuds_visite(m_listesAdj.size(), false);
+    // typedef pair<int, int> pairs;
     priority_queue<pair<int, int>> pq;
 
     pq.push(make_pair(0, p_origine));
@@ -146,41 +147,23 @@ unsigned int Graphe::plusCourtChemin(size_t p_origine, size_t p_destination, std
 
         if (min == numeric_limits<unsigned int>::max()) break; //quitter la boucle : il est impossible de se rendre à destination
 
-        solutionne[noeud_solution] = true; //indique qu'il est solutionné
+        noeuds_visite[noeud_solution] = true; //indique qu'il est solutionné
 
         if (noeud_solution == p_destination) break; //car on a obtenu distance[p_destination] et predecesseur[p_destination]
-
 
         //relâcher les arcs sortant de noeud_solution (le noeud solutionné)
         for (const auto & arc : m_listesAdj[noeud_solution])
         {
-
-            // TODO les conditions d'ajouts ne doivent pas être bonne ?
-//
-//            if(pq.top().second != arc.destination && !solutionne[arc.destination]){
-//                pq.push(make_pair(arc.poids, arc.destination));
-            // ne semble pas changer gran
-//            }
-
-            unsigned int temp = distance[noeud_solution] + arc.poids;
-            if (distance[arc.destination] > distance[noeud_solution] + arc.poids)
-            {
-                distance[arc.destination] = temp;
-                predecesseur[arc.destination] = noeud_solution;
-                pq.push(make_pair(arc.poids, arc.destination));
-
+            if(!noeuds_visite[arc.destination]){
+                unsigned int distanceAjustee = distance[noeud_solution] + arc.poids;
+                if (distanceAjustee < distance[arc.destination])
+                {
+                    distance[arc.destination] = distanceAjustee;
+                    predecesseur[arc.destination] = noeud_solution;
+                    pq.push(make_pair(distance[arc.destination], arc.destination));
+                }
             }
-
-//            unsigned int origineEtPoids = distance[p_origine] + arc.poids;
-//            if (distance[noeud_solution] > origineEtPoids)
-//            {
-//                distance[arc.destination] = origineEtPoids;
-//                predecesseur[arc.destination] = noeud_solution;
-//                pq.push(make_pair(arc.poids, arc.destination));
-//
-//            }
         }
-
     }
 
     //cas où l'on n'a pas de solution
