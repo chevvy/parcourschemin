@@ -128,8 +128,8 @@ unsigned int Graphe::plusCourtChemin(size_t p_origine, size_t p_destination, std
     vector<unsigned int> distance(m_listesAdj.size(), numeric_limits<unsigned int>::max());
     vector<size_t> predecesseur(m_listesAdj.size(), numeric_limits<size_t>::max());
     vector<bool> noeuds_visite(m_listesAdj.size(), false);
-    // typedef pair<int, int> pairs;
-    priority_queue<pair<int, int>> pq;
+    typedef pair<int, int> pairs;
+    priority_queue<pairs, vector<pairs>, greater<pairs> > pq;
 
     pq.push(make_pair(0, p_origine));
     distance[p_origine] = 0;
@@ -140,7 +140,6 @@ unsigned int Graphe::plusCourtChemin(size_t p_origine, size_t p_destination, std
         //trouver le noeud dans q tel que distance[noeud] est minimal
         unsigned int min = numeric_limits<unsigned int>::max();
         auto noeud_solution = numeric_limits<size_t>::max();
-
         min = distance[pq.top().second];
         noeud_solution = pq.top().second;
         pq.pop();
